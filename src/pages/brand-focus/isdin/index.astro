@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import AffiliateCTA from "@/components/commercial/AffiliateCTA.astro";
+import ArticleCard from "@/components/content/ArticleCard.astro";
+import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { byNewest, contentArtworkKey, contentHref } from "@/utils/content";
+const entries = byNewest(
+  await getCollection("brand-focus", ({ data, id }) => !data.draft && id.startsWith("isdin/")),
+);
+---
+
+<BaseLayout
+  title="ISDIN brand focus"
+  description="BES3's focused guide to ISDIN sun care, photoaging, formulas and product choices."
+>
+  <section class="hero shell">
+    <div class="hero__copy">
+      <p class="eyebrow">BRAND FOCUS · 01</p>
+      <h1>ISDIN, through a clearer lens.</h1>
+      <p class="lede">
+        A focused guide to the brand's sun-care expertise, photoaging approach and the products
+        readers may want to understand first.
+      </p>
+      <p>
+        <small
+          >This editorial feature may contain selected commercial links. Every relationship is
+          disclosed beside the link.</small
+        >
+      </p>
+    </div>
+    <div class="hero__art">
+      <EditorialArtwork
+        artworkKey="brand-focus/isdin"
+        label="Person applying sunscreen in natural daylight"
+      />
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE EDIT</p><h2>Where to begin with ISDIN.</h2></div><p>
+          Start with sun care and photoaging, then explore targeted formulas for hydration, uneven
+          tone and night-time renewal.
+        </p>
+      </div>
+      <div class="card-grid">
+        {
+          entries.map((entry) => (
+            <ArticleCard
+              href={contentHref(entry)}
+              title={entry.data.title}
+              description={entry.data.description}
+              eyebrow={entry.data.eyebrow}
+              publishDate={entry.data.publishDate}
+              readTime={entry.data.readTime}
+              artworkKey={contentArtworkKey(entry)}
+            />
+          ))
+        }
+      </div>
+      <AffiliateCTA linkId="isdin-home" placement="brand-hub" articleSlug="isdin-brand-hub" />
+    </div>
+  </section>
+</BaseLayout>

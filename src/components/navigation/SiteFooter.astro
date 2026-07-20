@@ -1,0 +1,36 @@
+---
+import Logo from "@/components/base/Logo.astro";
+import { LEGAL_LINKS, PRIMARY_NAV, SITE, TRUST_LINKS } from "@/data/site";
+---
+
+<footer class="site-footer">
+  <div class="shell footer-mast">
+    <div class="footer-intro">
+      <a href="/" aria-label="BES3 home"><Logo /></a>
+      <p class="footer-signoff">Better evidence. Better choices. Better skin.</p>
+    </div>
+    <p class="footer-note">
+      Independent skincare intelligence for clearer everyday choices. Educational content, never a
+      substitute for medical advice.
+    </p>
+    <a class="footer-contact" href={`mailto:${SITE.email}`}>Write to the editorial desk</a>
+  </div>
+  <div class="shell footer-index">
+    <nav aria-label="Explore BES3">
+      <p class="footer-label">Explore</p>
+      <div>{PRIMARY_NAV.map((item) => <a href={item.href}>{item.label}</a>)}</div>
+    </nav>
+    <nav aria-label="BES3 standards">
+      <p class="footer-label">Our standard</p>
+      <div>{TRUST_LINKS.map((item) => <a href={item.href}>{item.label}</a>)}</div>
+    </nav>
+    <nav aria-label="Legal and contact">
+      <p class="footer-label">Information</p>
+      <div>{LEGAL_LINKS.map((item) => <a href={item.href}>{item.label}</a>)}</div>
+    </nav>
+  </div>
+  <div class="shell footer-bottom">
+    <p>© {new Date().getFullYear()} BES3</p>
+    <a href="/rss.xml">RSS</a>
+  </div>
+</footer>

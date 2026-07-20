@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f1e9"/>
+  <circle cx="1000" cy="112" r="92" fill="#e7c895"/>
+  <path d="M0 510c240-170 470-190 690-95 190 82 334 74 510 4v211H0Z" fill="#3e6662"/>
+  <path d="M0 570c260-100 520-126 770-48 160 50 294 51 430 11v97H0Z" fill="#18201f"/>
+  <text x="90" y="190" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="8" fill="#3e6662">BEAUTY · EVIDENCE · SKIN</text>
+  <text x="90" y="340" font-family="Georgia, serif" font-size="142" fill="#18201f">BES³</text>
+  <text x="90" y="420" font-family="Arial, sans-serif" font-size="32" fill="#38413f">Skincare, examined more clearly.</text>
+</svg>

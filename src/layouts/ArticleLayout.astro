@@ -1,0 +1,108 @@
+---
+import type { CollectionEntry, CollectionKey } from "astro:content";
+import AffiliateCTA from "@/components/commercial/AffiliateCTA.astro";
+import DisclosureNotice from "@/components/commercial/DisclosureNotice.astro";
+import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { formatDate } from "@/utils/content";
+
+interface Props {
+  entry: CollectionEntry<CollectionKey>;
+}
+
+const { entry } = Astro.props;
+const data = entry.data as CollectionEntry<"journal">["data"];
+const updated = data.updatedDate || data.publishDate;
+const ctaLinkId = data.ctaLinkIds?.[0];
+const articleSlug =
+  entry.id
+    .replace(/\.(md|mdx)$/, "")
+    .split("/")
+    .at(-1) || entry.id;
+---
+
+<BaseLayout title={data.title} description={data.description} type="article">
+  <article>
+    <header class="article-header shell">
+      <p class="eyebrow">{data.eyebrow || entry.collection.replace("-", " ")}</p>
+      <h1>{data.title}</h1>
+      <p class="lede">{data.description}</p>
+      <p class="article-header__meta">
+        <span>By <a href={`/authors/${data.author}/`}>BES3 Editorial</a></span>
+        <time datetime={data.publishDate.toISOString()}>{formatDate(data.publishDate)}</time>
+        <span>Updated {formatDate(updated)}</span>
+        <span>{data.readTime} min read</span>
+      </p>
+    </header>
+
+    <div class="shell">
+      <EditorialArtwork
+        artworkKey={`${entry.collection}/${entry.id}`}
+        label={`${data.title} editorial photo`}
+      />
+    </div>
+
+    {
+      data.disclosure !== "none" && (
+        <div class="reading-width section--tight">
+          <DisclosureNotice relationship={data.disclosure} />
+        </div>
+      )
+    }
+
+    <div class="article-shell shell">
+      <aside class="article-aside" aria-label="Article standard">
+        <p>
+          <strong>BES3 standard</strong><br />Sources shown<br />Limits stated<br />Updated for
+          currency
+        </p>
+      </aside>
+      <div class="article-body">
+        <slot />
+
+        {
+          ctaLinkId && (
+            <AffiliateCTA linkId={ctaLinkId} placement="article-end" articleSlug={articleSlug} />
+          )
+        }
+
+        <section class="sources" aria-labelledby="sources-heading">
+          <h2 id="sources-heading">Sources</h2>
+          <ol>
+            {
+              data.sources.map((source) => (
+                <li>
+                  <a href={source.url}>{source.label}</a>
+                </li>
+              ))
+            }
+          </ol>
+          <p>
+            <small
+              >Last reviewed {formatDate(updated)}. This article is educational and does not replace
+              medical advice.</small
+            >
+          </p>
+        </section>
+      </div>
+      <aside class="article-aside" aria-label="Related topics">
+        {
+          data.ingredients.length > 0 && (
+            <p>
+              <br />
+              {data.ingredients.join(" · ")}
+            </p>
+          )
+        }
+        {
+          data.concerns.length > 0 && (
+            <p>
+              <br />
+              {data.concerns.join(" · ")}
+            </p>
+          )
+        }
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

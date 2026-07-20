@@ -1,0 +1,51 @@
+---
+import Logo from "@/components/base/Logo.astro";
+import { PRIMARY_NAV } from "@/data/site";
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? currentPath === href : currentPath.startsWith(href);
+---
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner shell">
+    <a class="site-logo" href="/" aria-label="BES3 home"><Logo /></a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {
+        PRIMARY_NAV.map((item) => (
+          <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a class="icon-link" href="/search/" aria-label="Search BES3">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5"></circle>
+          <path d="m16 16 4 4"></path>
+        </svg>
+      </a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Open site menu">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </summary>
+        <nav aria-label="Mobile navigation">
+          {
+            PRIMARY_NAV.map((item, index) => (
+              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                <span>0{index + 1}</span>
+                {item.label}
+              </a>
+            ))
+          }
+          <a href="/about/"><span>07</span>About BES3</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

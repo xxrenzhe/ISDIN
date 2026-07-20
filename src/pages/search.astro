@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Search BES3" description="Search BES3 skincare guides and editorial notes.">
+  <section class="page-hero shell">
+    <div><p class="eyebrow">FIND YOUR THREAD</p><h1>Search the archive.</h1></div><p class="lede">
+      Find a concern, ingredient, routine or brand feature without guessing the right category
+      first.
+    </p>
+  </section>
+  <section class="section section--paper">
+    <div class="shell">
+      <div id="search" class="search-box" aria-label="BES3 search"></div>
+    </div>
+  </section>
+  <script is:inline>
+    const mount = document.querySelector("#search");
+    if (mount) {
+      import("/pagefind/pagefind-ui.js")
+        .then(({ PagefindUI }) => {
+          new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
+        })
+        .catch(() => {
+          mount.innerHTML =
+            '<p>Search is available after the first production build. Browse the <a href="/journal/">journal</a> meanwhile.</p>';
+        });
+    }
+  </script>
+</BaseLayout>

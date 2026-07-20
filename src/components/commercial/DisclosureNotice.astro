@@ -1,0 +1,22 @@
+---
+interface Props {
+  relationship?: "none" | "affiliate" | "sponsored";
+}
+
+const { relationship = "none" } = Astro.props;
+---
+
+{
+  relationship !== "none" && (
+    <aside class="disclosure" aria-label={`${relationship} disclosure`}>
+      <p class="eyebrow">
+        {relationship === "sponsored" ? "SPONSORED DISCLOSURE" : "AFFILIATE DISCLOSURE"}
+      </p>
+      <p>
+        BES3 may earn a commission from selected links. This does not affect our editorial decisions
+        or the price you pay.
+      </p>
+      <a href="/affiliate-disclosure/">How our commercial links work</a>
+    </aside>
+  )
+}

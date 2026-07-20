@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import CollectionIndex from "@/components/content/CollectionIndex.astro";
+import { byNewest, contentArtworkKey, contentHref } from "@/utils/content";
+const entries = byNewest(await getCollection("product-guides", ({ data }) => !data.draft));
+const items = entries.map((entry) => ({
+  href: contentHref(entry),
+  ...entry.data,
+  eyebrow: "PRODUCT GUIDE",
+  artworkKey: contentArtworkKey(entry),
+}));
+---
+
+<CollectionIndex
+  title="Product guides"
+  eyebrow="CHOOSE BY USE"
+  description="Compare textures, formats and formulation choices before deciding which product category fits your routine."
+  {items}
+/>

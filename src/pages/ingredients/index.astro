@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import CollectionIndex from "@/components/content/CollectionIndex.astro";
+import { byNewest, contentArtworkKey, contentHref } from "@/utils/content";
+const entries = byNewest(await getCollection("ingredients", ({ data }) => !data.draft));
+const items = entries.map((entry) => ({
+  href: contentHref(entry),
+  ...entry.data,
+  eyebrow: "INGREDIENT INDEX",
+  artworkKey: contentArtworkKey(entry),
+}));
+---
+
+<CollectionIndex
+  title="Ingredient index"
+  eyebrow="FORMULAS, EXPLAINED"
+  description="What familiar skincare ingredients may do, how to use them and where the evidence has limits."
+  layout="index"
+  {items}
+/>

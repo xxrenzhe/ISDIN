@@ -1,0 +1,46 @@
+---
+import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
+import { formatDate } from "@/utils/content";
+
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  eyebrow?: string;
+  publishDate: Date;
+  readTime?: number;
+  variant?: "standard" | "feature" | "compact";
+  artworkKey: string;
+}
+
+const {
+  href,
+  title,
+  description,
+  eyebrow = "BES3 EDITORIAL",
+  publishDate,
+  readTime = 6,
+  variant = "standard",
+  artworkKey,
+} = Astro.props;
+---
+
+<article class:list={["article-card", `article-card--${variant}`]}>
+  {
+    variant !== "compact" && (
+      <a href={href} tabindex="-1" aria-hidden="true">
+        <EditorialArtwork artworkKey={artworkKey} compact label={`${title} editorial photo`} />
+      </a>
+    )
+  }
+  <div class="article-card__body">
+    <p class="eyebrow">{eyebrow}</p>
+    <h3><a href={href}>{title}</a></h3>
+    {variant !== "compact" && <p>{description}</p>}
+    <p class="card-meta">
+      <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time><span
+        >{readTime} min read</span
+      >
+    </p>
+  </div>
+</article>

@@ -1,0 +1,65 @@
+---
+import "@fontsource-variable/manrope";
+import "@fontsource-variable/newsreader";
+import SiteFooter from "@/components/navigation/SiteFooter.astro";
+import SiteHeader from "@/components/navigation/SiteHeader.astro";
+import { SITE } from "@/data/site";
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+  type?: "website" | "article";
+}
+
+const {
+  title,
+  description = SITE.description,
+  canonical = new URL(Astro.url.pathname, SITE.url).toString(),
+  noindex = false,
+  type = "website",
+} = Astro.props;
+const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": type === "article" ? "Article" : "WebPage",
+  name: fullTitle,
+  description,
+  url: canonical,
+  isPartOf: {
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="BES3 editorial feed" href="/rss.xml" />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${SITE.url}/og-default.svg`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <SiteHeader />
+    <main id="main-content">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

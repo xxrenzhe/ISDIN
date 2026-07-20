@@ -1,0 +1,49 @@
+---
+import ArticleCard from "@/components/content/ArticleCard.astro";
+import PageHero from "@/components/content/PageHero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface CardItem {
+  href: string;
+  title: string;
+  description: string;
+  eyebrow?: string;
+  publishDate: Date;
+  readTime?: number;
+  artworkKey: string;
+}
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  description: string;
+  items: CardItem[];
+  layout?: "catalogue" | "index" | "journal";
+}
+
+const { title, eyebrow, description, items, layout = "catalogue" } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class:list={["collection-index", `collection-index--${layout}`]}>
+    <PageHero {title} {eyebrow} {description} />
+    <section class="section shell">
+      <div class="card-grid">
+        {
+          items.map((item, index) => (
+            <ArticleCard
+              href={item.href}
+              title={item.title}
+              description={item.description}
+              eyebrow={item.eyebrow}
+              publishDate={item.publishDate}
+              readTime={item.readTime}
+              artworkKey={item.artworkKey}
+              variant={layout === "journal" && index === 0 ? "feature" : "standard"}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

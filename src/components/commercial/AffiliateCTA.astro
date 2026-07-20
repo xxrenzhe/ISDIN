@@ -1,0 +1,57 @@
+---
+import DisclosureNotice from "@/components/commercial/DisclosureNotice.astro";
+import { getIsdinLink } from "@/data/affiliate-links/isdin";
+
+interface Props {
+  linkId: string;
+  placement?: "after-verdict" | "article-end" | "brand-hub";
+  articleSlug?: string;
+}
+
+const { linkId, placement = "article-end", articleSlug = "brand-focus" } = Astro.props;
+const link = getIsdinLink(linkId);
+const isAffiliate = link.relationship === "affiliate";
+---
+
+<div class="affiliate-cta" data-link-id={link.id} data-placement={placement}>
+  {isAffiliate && <DisclosureNotice relationship="affiliate" />}
+  <div class="affiliate-cta__inner">
+    <div>
+      <p class="eyebrow">
+        {isAffiliate ? "OFFICIAL ISDIN PARTNER LINK" : "OFFICIAL BRAND WEBSITE"}
+      </p>
+      <h2>Continue your research at ISDIN</h2>
+      <p>See current availability, complete product details and the latest usage guidance.</p>
+    </div>
+    <a
+      class="button button--primary"
+      href={link.href}
+      rel={isAffiliate ? "sponsored nofollow noopener" : "noopener"}
+      data-affiliate={isAffiliate ? "true" : "false"}
+      data-brand="isdin"
+      data-article={articleSlug}
+    >
+      {link.label}
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"></path></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>("[data-affiliate='true']").forEach((link) => {
+    link.addEventListener("click", () => {
+      const container = link.closest<HTMLElement>("[data-link-id]");
+      if (!container) return;
+      document.dispatchEvent(
+        new CustomEvent("bes3:affiliate-click", {
+          detail: {
+            linkId: container.dataset.linkId,
+            placement: container.dataset.placement,
+            brand: link.dataset.brand,
+            article: link.dataset.article,
+          },
+        }),
+      );
+    });
+  });
+</script>
