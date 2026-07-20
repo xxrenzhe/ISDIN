@@ -1,13 +1,16 @@
 ---
 import { getCollection } from "astro:content";
 import AffiliateCTA from "@/components/commercial/AffiliateCTA.astro";
+import MerchantLink from "@/components/commercial/MerchantLink.astro";
 import ArticleCard from "@/components/content/ArticleCard.astro";
 import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getIsdinLink } from "@/data/affiliate-links/isdin";
 import { byNewest, contentArtworkKey, contentHref } from "@/utils/content";
 const entries = byNewest(
   await getCollection("brand-focus", ({ data, id }) => !data.draft && id.startsWith("isdin/")),
 );
+const isdinHomeLink = getIsdinLink("isdin-home");
 ---
 
 <BaseLayout
@@ -60,7 +63,13 @@ const entries = byNewest(
           ))
         }
       </div>
-      <AffiliateCTA linkId="isdin-home" placement="brand-hub" articleSlug="isdin-brand-hub" />
+      {
+        isdinHomeLink.relationship === "affiliate" ? (
+          <AffiliateCTA linkId="isdin-home" placement="brand-hub" articleSlug="isdin-brand-hub" />
+        ) : (
+          <MerchantLink linkId="isdin-home" placement="brand-hub" articleSlug="isdin-brand-hub" />
+        )
+      }
     </div>
   </section>
 </BaseLayout>

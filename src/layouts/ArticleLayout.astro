@@ -2,7 +2,9 @@
 import type { CollectionEntry, CollectionKey } from "astro:content";
 import AffiliateCTA from "@/components/commercial/AffiliateCTA.astro";
 import DisclosureNotice from "@/components/commercial/DisclosureNotice.astro";
+import MerchantLink from "@/components/commercial/MerchantLink.astro";
 import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
+import { getIsdinLink } from "@/data/affiliate-links/isdin";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { formatDate } from "@/utils/content";
 
@@ -14,11 +16,16 @@ const { entry } = Astro.props;
 const data = entry.data as CollectionEntry<"journal">["data"];
 const updated = data.updatedDate || data.publishDate;
 const ctaLinkId = data.ctaLinkIds?.[0];
+const ctaLink = ctaLinkId ? getIsdinLink(ctaLinkId) : undefined;
 const articleSlug =
   entry.id
     .replace(/\.(md|mdx)$/, "")
     .split("/")
     .at(-1) || entry.id;
+
+if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
+  throw new Error(`Affiliate article requires an approved affiliate link: ${entry.id}`);
+}
 ---
 
 <BaseLayout title={data.title} description={data.description} type="article">
@@ -61,9 +68,12 @@ const articleSlug =
         <slot />
 
         {
-          ctaLinkId && (
-            <AffiliateCTA linkId={ctaLinkId} placement="article-end" articleSlug={articleSlug} />
-          )
+          ctaLinkId &&
+            (data.disclosure === "affiliate" ? (
+              <AffiliateCTA linkId={ctaLinkId} placement="article-end" articleSlug={articleSlug} />
+            ) : (
+              <MerchantLink linkId={ctaLinkId} placement="article-end" articleSlug={articleSlug} />
+            ))
         }
 
         <section class="sources" aria-labelledby="sources-heading">

@@ -6,28 +6,56 @@ const sourceSchema = z.object({
   url: z.string().url(),
 });
 
-const editorialSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  eyebrow: z.string().optional(),
-  publishDate: z.coerce.date(),
-  updatedDate: z.coerce.date().optional(),
-  author: z.string().default("bes3-editorial"),
-  draft: z.boolean().default(false),
-  featured: z.boolean().default(false),
-  readTime: z.number().int().positive().default(6),
-  concerns: z.array(z.string()).default([]),
-  ingredients: z.array(z.string()).default([]),
-  productTypes: z.array(z.string()).default([]),
-  tags: z.array(z.string()).default([]),
-  sources: z.array(sourceSchema).min(1),
-  disclosure: z.enum(["none", "affiliate", "sponsored"]).default("none"),
-  brand: z.string().optional(),
-  brandFocusType: z.enum(["brand-guide", "product-guide", "routine-feature"]).optional(),
-  ctaLinkIds: z.array(z.string()).default([]),
-  reviewDueDate: z.coerce.date().optional(),
-  heroVariant: z.enum(["mineral", "sun", "clay", "ink", "mist"]).default("mineral"),
+const commercialSchema = z.object({
+  merchantId: z.string().min(1),
+  ctaLinkIds: z.array(z.string()).min(1),
+  assetApprovalRef: z.string().min(1).optional(),
 });
+
+const editorialSchema = z
+  .object({
+    title: z.string(),
+    description: z.string(),
+    eyebrow: z.string().optional(),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().default("bes3-editorial"),
+    draft: z.boolean().default(false),
+    featured: z.boolean().default(false),
+    readTime: z.number().int().positive().default(6),
+    concerns: z.array(z.string()).default([]),
+    ingredients: z.array(z.string()).default([]),
+    productTypes: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    sources: z.array(sourceSchema).min(1),
+    disclosure: z.enum(["none", "affiliate", "sponsored"]).default("none"),
+    brand: z.string().optional(),
+    brandFocusType: z.enum(["brand-guide", "product-guide", "routine-feature"]).optional(),
+    ctaLinkIds: z.array(z.string()).default([]),
+    commercial: commercialSchema.optional(),
+    reviewDueDate: z.coerce.date().optional(),
+    heroVariant: z.enum(["mineral", "sun", "clay", "ink", "mist"]).default("mineral"),
+  })
+  .refine(
+    (data) => {
+      const hasCommercialRelationship =
+        data.disclosure === "affiliate" || data.disclosure === "sponsored";
+      return hasCommercialRelationship ? Boolean(data.commercial) : !data.commercial;
+    },
+    {
+      message: "Commercial metadata must match the disclosure relationship.",
+      path: ["commercial"],
+    },
+  )
+  .refine(
+    (data) =>
+      !data.commercial ||
+      data.ctaLinkIds.every((linkId) => data.commercial?.ctaLinkIds.includes(linkId)),
+    {
+      message: "Every article CTA must be declared in commercial.ctaLinkIds.",
+      path: ["commercial", "ctaLinkIds"],
+    },
+  );
 
 const authorSchema = z.object({
   name: z.string(),

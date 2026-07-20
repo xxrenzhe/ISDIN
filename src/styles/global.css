@@ -365,7 +365,7 @@ h3 {
 }
 
 .mobile-menu nav a span {
-  color: var(--clay);
+  color: var(--mineral-dark);
   font-family: var(--font-body);
   font-size: 0.67rem;
   font-weight: 750;
@@ -645,7 +645,7 @@ h3 {
 }
 
 .indexed-list a span:first-child {
-  color: var(--clay);
+  color: var(--mineral-dark);
   font-size: 0.72rem;
   font-weight: 760;
 }

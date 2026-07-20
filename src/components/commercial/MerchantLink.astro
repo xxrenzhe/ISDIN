@@ -1,0 +1,33 @@
+---
+import { getIsdinLink } from "@/data/affiliate-links/isdin";
+
+interface Props {
+  linkId: string;
+  placement?: "after-verdict" | "article-end" | "brand-hub";
+  articleSlug?: string;
+}
+
+const { linkId, placement = "article-end", articleSlug = "brand-focus" } = Astro.props;
+const link = getIsdinLink(linkId);
+---
+
+<div class="affiliate-cta merchant-link" data-link-id={link.id} data-placement={placement}>
+  <div class="affiliate-cta__inner">
+    <div>
+      <p class="eyebrow">OFFICIAL BRAND WEBSITE</p>
+      <h2>Continue your research at ISDIN</h2>
+      <p>See current availability, complete product details and the latest usage guidance.</p>
+    </div>
+    <a
+      class="button button--primary"
+      href={link.officialUrl}
+      rel="noopener"
+      data-merchant-link="true"
+      data-brand="isdin"
+      data-article={articleSlug}
+    >
+      {link.label}
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"></path></svg>
+    </a>
+  </div>
+</div>

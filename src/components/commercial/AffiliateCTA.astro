@@ -11,23 +11,25 @@ interface Props {
 const { linkId, placement = "article-end", articleSlug = "brand-focus" } = Astro.props;
 const link = getIsdinLink(linkId);
 const isAffiliate = link.relationship === "affiliate";
+
+if (!isAffiliate) {
+  throw new Error(`AffiliateCTA requires an approved affiliate link: ${linkId}`);
+}
 ---
 
 <div class="affiliate-cta" data-link-id={link.id} data-placement={placement}>
-  {isAffiliate && <DisclosureNotice relationship="affiliate" />}
+  <DisclosureNotice relationship="affiliate" />
   <div class="affiliate-cta__inner">
     <div>
-      <p class="eyebrow">
-        {isAffiliate ? "OFFICIAL ISDIN PARTNER LINK" : "OFFICIAL BRAND WEBSITE"}
-      </p>
+      <p class="eyebrow">OFFICIAL ISDIN PARTNER LINK</p>
       <h2>Continue your research at ISDIN</h2>
       <p>See current availability, complete product details and the latest usage guidance.</p>
     </div>
     <a
       class="button button--primary"
       href={link.href}
-      rel={isAffiliate ? "sponsored nofollow noopener" : "noopener"}
-      data-affiliate={isAffiliate ? "true" : "false"}
+      rel="sponsored nofollow noopener"
+      data-affiliate="true"
       data-brand="isdin"
       data-article={articleSlug}
     >
