@@ -352,13 +352,13 @@ h3 {
 }
 
 .mobile-menu nav {
-  position: fixed;
+  position: absolute;
   z-index: 90;
   top: 78px;
   right: 0;
-  bottom: 0;
   left: 0;
   display: grid;
+  height: calc(100dvh - 78px);
   overflow-y: auto;
   padding: var(--space-6) 20px var(--space-12);
   border-bottom: 1px solid var(--line);
@@ -1314,6 +1314,7 @@ h3 {
 
   .mobile-menu nav {
     top: 70px;
+    height: calc(100dvh - 70px);
   }
 
   .section-heading,

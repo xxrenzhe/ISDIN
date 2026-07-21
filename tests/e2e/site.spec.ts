@@ -75,6 +75,13 @@ test("mobile menu locks the page and closes with Escape", async ({ page }) => {
   await expect(menu).toHaveAttribute("open", "");
   await expect(page.locator("body")).toHaveClass(/mobile-menu-open/);
 
+  const menuBounds = await page.locator(".mobile-menu nav").evaluate((element) => {
+    const bounds = element.getBoundingClientRect();
+    return { bottom: bounds.bottom, top: bounds.top };
+  });
+  expect(menuBounds.top).toBe(70);
+  expect(menuBounds.bottom).toBeGreaterThanOrEqual(560);
+
   await page.keyboard.press("Escape");
   await expect(menu).not.toHaveAttribute("open", "");
   await expect(page.locator("body")).not.toHaveClass(/mobile-menu-open/);
