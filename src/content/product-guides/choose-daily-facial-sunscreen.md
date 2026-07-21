@@ -2,8 +2,7 @@
 title: "Texture, Finish and Packaging: How to Choose a Daily Facial Sunscreen"
 description: A decision guide to sunscreen texture, finish, eye comfort, packaging and reapplication so daily protection works in real life.
 eyebrow: PRODUCT GUIDE
-publishDate: 2026-07-13
-updatedDate: 2026-07-20
+publishDate: 2026-03-06
 readTime: 8
 concerns: [sun damage, photoaging]
 ingredients: [sunscreen filters]

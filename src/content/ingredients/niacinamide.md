@@ -2,8 +2,7 @@
 title: "Niacinamide: Benefits, Concentrations and Common Mistakes"
 description: A practical guide to niacinamide for barrier support, oil balance and uneven tone, including why higher percentages are not always better.
 eyebrow: INGREDIENT BRIEFING
-publishDate: 2026-07-09
-updatedDate: 2026-07-20
+publishDate: 2025-03-07
 readTime: 7
 concerns: [uneven tone, blemishes, sensitivity]
 ingredients: [niacinamide]

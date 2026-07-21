@@ -1,17 +1,23 @@
 import type { ImageMetadata } from "astro";
 import actinicaAgeless from "@/assets/images/bes3-cover-isdin-actinica-ageless.webp";
 import brandGuide from "@/assets/images/bes3-cover-isdin-brand-guide.webp";
+import browProducts from "@/assets/images/bes3-cover-makeup-brow-basics.webp";
 import claimMethod from "@/assets/images/bes3-cover-journal-claim-method.webp";
+import creamPowderBlush from "@/assets/images/bes3-cover-makeup-cream-powder-blush.webp";
 import dailyFacialSunscreen from "@/assets/images/bes3-cover-guide-daily-facial-sunscreen.webp";
 import dailySun from "@/assets/images/bes3-cover-routine-daily-sun.webp";
 import fragranceConcentrations from "@/assets/images/bes3-cover-fragrance-concentrations.webp";
 import fragranceLayering from "@/assets/images/bes3-cover-fragrance-layering.webp";
+import fragranceStorage from "@/assets/images/bes3-cover-fragrance-storage.webp";
 import fusionWater from "@/assets/images/bes3-cover-isdin-fusion-water.webp";
 import hairHeatStyling from "@/assets/images/bes3-cover-hair-heat-styling.webp";
 import hairScalpCare from "@/assets/images/bes3-cover-hair-scalp-care.webp";
+import hairShampooLabel from "@/assets/images/bes3-cover-hair-shampoo-label.webp";
 import homeBrandFocus from "@/assets/images/bes3-cover-home-brand-focus.webp";
 import hyaluronicAcid from "@/assets/images/bes3-cover-ingredient-hyaluronic-acid.webp";
 import isdinHub from "@/assets/images/bes3-cover-isdin-hub.webp";
+import ingredientList from "@/assets/images/bes3-cover-journal-ingredient-list.webp";
+import lipProduct from "@/assets/images/bes3-cover-guide-lip-product.webp";
 import melaclear from "@/assets/images/bes3-cover-isdin-melaclear.webp";
 import melatonik from "@/assets/images/bes3-cover-isdin-melatonik.webp";
 import makeupComplexion from "@/assets/images/bes3-cover-makeup-complexion.webp";
@@ -25,6 +31,7 @@ import photoaging from "@/assets/images/bes3-cover-concern-photoaging.webp";
 import retinalAdvanced from "@/assets/images/bes3-cover-isdin-retinal-advanced.webp";
 import retinalRetinol from "@/assets/images/bes3-cover-ingredient-retinal-retinol.webp";
 import retinoidRoutine from "@/assets/images/bes3-cover-routine-introduce-retinoid.webp";
+import eveningReset from "@/assets/images/bes3-cover-routine-evening-reset.webp";
 import sunscreenAmount from "@/assets/images/bes3-cover-concern-sunscreen-amount.webp";
 import tranexamicAcid from "@/assets/images/bes3-cover-ingredient-tranexamic-acid.webp";
 import unevenTone from "@/assets/images/bes3-cover-concern-uneven-tone.webp";
@@ -42,9 +49,11 @@ export const articleArtwork: Record<string, ImageMetadata> = {
   "brand-focus/isdin/melatonik-guide": melatonik,
   "brand-focus/isdin/retinal-advanced-guide": retinalAdvanced,
   "fragrance/fragrance-concentrations": fragranceConcentrations,
+  "fragrance/fragrance-storage-guide": fragranceStorage,
   "fragrance/how-to-layer-fragrance": fragranceLayering,
   "hair-care/heat-styling-guide": hairHeatStyling,
   "hair-care/scalp-care-routine": hairScalpCare,
+  "hair-care/shampoo-label-guide": hairShampooLabel,
   "concerns/how-much-sunscreen": sunscreenAmount,
   "concerns/photoaging": photoaging,
   "concerns/uneven-tone": unevenTone,
@@ -58,14 +67,19 @@ export const articleArtwork: Record<string, ImageMetadata> = {
   "ingredients/tranexamic-acid": tranexamicAcid,
   "ingredients/vitamin-c": vitaminC,
   "journal/how-bes3-reads-a-skincare-claim": claimMethod,
+  "journal/how-to-read-an-ingredient-list": ingredientList,
+  "makeup/brow-products-guide": browProducts,
+  "makeup/cream-vs-powder-blush": creamPowderBlush,
   "makeup/complexion-makeup-guide": makeupComplexion,
   "makeup/choose-a-concealer": makeupConcealer,
   "product-guides/choose-daily-facial-sunscreen": dailyFacialSunscreen,
+  "product-guides/lip-product-guide": lipProduct,
   "product-guides/mineral-vs-organic-sunscreen": mineralOrganic,
   "routines/daily-sun-protection": dailySun,
   "routines/introduce-retinoid": retinoidRoutine,
   "routines/minimal-dry-sensitive": minimalSensitive,
   "routines/morning-uneven-tone": morningUnevenTone,
+  "routines/simple-evening-reset": eveningReset,
   "routines/vitamin-c-and-retinal": vitaminCRetinal,
 };
 

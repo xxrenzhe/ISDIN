@@ -2,8 +2,7 @@
 title: "Melatonik: Melatonin, Vitamin C and Overnight Skin Care"
 description: A measured guide to Melatonik's serum-in-oil format, melatonin, bakuchiol and vitamin C, with fit and routine-placement advice.
 eyebrow: BRAND FOCUS · PRODUCT GUIDE
-publishDate: 2026-07-17
-updatedDate: 2026-07-21
+publishDate: 2026-05-08
 readTime: 8
 concerns: [dullness, dryness, photoaging]
 ingredients: [melatonin, bakuchiol, vitamin C]

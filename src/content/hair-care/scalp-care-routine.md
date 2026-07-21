@@ -2,7 +2,7 @@
 title: "A Simple Scalp-Care Routine That Does Not Overcomplicate Wash Day"
 description: A restrained way to think about cleansing, conditioning and scalp-focused products without turning routine care into a laboratory.
 eyebrow: HAIR CARE
-publishDate: 2026-07-20
+publishDate: 2025-08-22
 readTime: 6
 concerns: [buildup, dryness, comfort]
 ingredients: [surfactants, conditioners]

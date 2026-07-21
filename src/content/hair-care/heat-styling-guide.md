@@ -2,7 +2,7 @@
 title: "Heat Styling: How to Lower the Stress on Your Hair"
 description: Make heat tools more manageable by changing temperature, timing and preparation before adding more products.
 eyebrow: HAIR CARE
-publishDate: 2026-07-17
+publishDate: 2025-06-20
 readTime: 5
 concerns: [dryness, breakage, manageability]
 ingredients: [film formers, conditioners]

@@ -50,12 +50,14 @@ const latestAllowed = new Date(
   Date.UTC(currentDate.getUTCFullYear(), currentDate.getUTCMonth(), currentDate.getUTCDate()),
 );
 const publishYears = new Set();
+const monthlyPublishCounts = new Map();
 const dateViolations = [];
 
 for (const file of markdownFiles(contentRoot)) {
   const key = relative(contentRoot, file);
   const metadata = frontmatter(file);
   const title = metadata.match(/^title:\s*"([^"]+)"$/m)?.[1];
+  const isDraft = /^draft:\s*true$/m.test(metadata);
 
   if (requiredArticles.has(key) && title !== requiredArticles.get(key)) {
     dateViolations.push(`${key}: expected title “${requiredArticles.get(key)}”`);
@@ -73,7 +75,11 @@ for (const file of markdownFiles(contentRoot)) {
     if (date > latestAllowed) {
       dateViolations.push(`${key}: future ${field} ${value}`);
     }
-    if (field === "publishDate") publishYears.add(date.getUTCFullYear());
+    if (field === "publishDate" && !isDraft) {
+      publishYears.add(date.getUTCFullYear());
+      const month = date.toISOString().slice(0, 7);
+      monthlyPublishCounts.set(month, (monthlyPublishCounts.get(month) || 0) + 1);
+    }
   }
 }
 
@@ -88,6 +94,21 @@ for (const key of requiredArticles.keys()) {
 
 for (const year of [2025, 2026]) {
   if (!publishYears.has(year)) dateViolations.push(`Missing published coverage for ${year}`);
+}
+
+const distributionStart = new Date(Date.UTC(2025, 0, 1));
+const currentMonth = new Date(
+  Date.UTC(latestAllowed.getUTCFullYear(), latestAllowed.getUTCMonth(), 1),
+);
+for (
+  const month = new Date(distributionStart);
+  month <= currentMonth;
+  month.setUTCMonth(month.getUTCMonth() + 1)
+) {
+  const key = month.toISOString().slice(0, 7);
+  const count = monthlyPublishCounts.get(key) || 0;
+  if (count === 0) dateViolations.push(`Missing published coverage for ${key}`);
+  if (count > 3) dateViolations.push(`${key} has ${count} published articles; distribute releases`);
 }
 
 if (dateViolations.length > 0) {

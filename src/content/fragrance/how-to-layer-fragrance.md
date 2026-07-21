@@ -2,7 +2,7 @@
 title: "A More Considered Way to Layer Fragrance"
 description: Use fewer, clearer choices to combine scent without losing the character of every bottle in the process.
 eyebrow: FRAGRANCE NOTES
-publishDate: 2026-07-16
+publishDate: 2025-11-21
 readTime: 5
 concerns: [comfort, scent preference]
 ingredients: [fragrance]

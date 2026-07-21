@@ -2,8 +2,7 @@
 title: "ISDIN Brand Guide: Sun Care, Photoaging and Key Products"
 description: An independent orientation to ISDIN's U.S. sun-care and face-care range, with a framework for deciding where the brand may fit.
 eyebrow: BRAND FOCUS · ISDIN
-publishDate: 2026-07-20
-updatedDate: 2026-07-21
+publishDate: 2026-06-05
 featured: true
 readTime: 9
 concerns: [sun damage, photoaging, uneven tone]

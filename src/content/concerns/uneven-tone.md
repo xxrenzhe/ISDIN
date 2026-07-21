@@ -2,8 +2,7 @@
 title: "Uneven Skin Tone: A Practical Starting Point"
 description: A measured approach to dark marks and uneven tone that prioritizes sun protection, tolerable actives and realistic timelines.
 eyebrow: SKIN CONCERN
-publishDate: 2026-07-10
-updatedDate: 2026-07-20
+publishDate: 2026-06-19
 readTime: 7
 concerns: [uneven tone, dark spots, sensitivity]
 ingredients: [tranexamic acid, niacinamide, retinoids]

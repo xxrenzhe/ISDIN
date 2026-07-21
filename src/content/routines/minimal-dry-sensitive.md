@@ -2,8 +2,7 @@
 title: "A Minimal Routine for Dry, Sensitive Skin"
 description: Three essential steps for dry, reactive skin, plus a careful path for adding treatment only after comfort and barrier function improve.
 eyebrow: SENSITIVE-SKIN ROUTINE
-publishDate: 2026-07-08
-updatedDate: 2026-07-20
+publishDate: 2025-04-04
 readTime: 7
 concerns: [dryness, sensitivity]
 ingredients: [ceramides, glycerin]

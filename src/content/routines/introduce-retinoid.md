@@ -2,8 +2,7 @@
 title: "How to Introduce a Retinoid Without Overcomplicating Your Routine"
 description: A staged four-week plan for adding retinol or retinal while protecting comfort, identifying irritation and keeping the routine simple.
 eyebrow: EVENING ROUTINE
-publishDate: 2026-07-14
-updatedDate: 2026-07-20
+publishDate: 2026-01-09
 readTime: 8
 concerns: [fine lines, uneven tone, blemishes]
 ingredients: [retinal, retinol, ceramides]

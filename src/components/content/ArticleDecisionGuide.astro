@@ -1,0 +1,154 @@
+---
+import type { CollectionKey } from "astro:content";
+
+type EditorialCollection = Exclude<CollectionKey, "authors">;
+
+interface Props {
+  collection: EditorialCollection;
+  concerns: string[];
+  productTypes: string[];
+}
+
+const { collection, concerns, productTypes } = Astro.props;
+const focus = [...productTypes, ...concerns].slice(0, 3).join(", ");
+const guides: Record<
+  EditorialCollection,
+  { title: string; intro: string; steps: string[]; limit: string }
+> = {
+  concerns: {
+    title: "Turn the concern into an observation",
+    intro:
+      "A concern is easier to act on when it is described in ordinary terms: where it appears, when it changes and what makes it feel better or worse. That keeps the next cosmetic choice proportionate to the problem you are actually trying to solve.",
+    steps: [
+      "Name one change to observe for two to four weeks.",
+      "Keep the rest of the routine stable while you test one change.",
+      "Use daylight and normal routines as the check, not only a close mirror.",
+    ],
+    limit:
+      "Sudden, painful, persistent or rapidly changing symptoms need clinical advice rather than a longer cosmetic routine.",
+  },
+  ingredients: {
+    title: "Test an ingredient in its real formula",
+    intro:
+      "An ingredient is only one part of a finished product. Format, concentration, supporting ingredients and how often you use it all affect the experience. Treat the guide as a way to frame a test, not as a promise about a single word on a label.",
+    steps: [
+      "Choose one product role, such as a treatment, moisturizer or cleanser.",
+      "Introduce one new formula at a time and follow its directions.",
+      "Note comfort, texture and visible changes before deciding whether to continue.",
+    ],
+    limit:
+      "A label cannot diagnose a skin condition or predict every reaction. Repeated irritation is a reason to stop, not to add more actives.",
+  },
+  routines: {
+    title: "Build a routine you can repeat",
+    intro:
+      "The useful version of a routine is the one that still works on a busy evening or an ordinary morning. Start with a dependable baseline, then add products only when they have a clear job and a place in the sequence.",
+    steps: [
+      "Keep cleansing, moisturizing and daytime protection distinct from optional treatments.",
+      "Change one variable before deciding that the whole routine has failed.",
+      "Pause optional treatments when comfort, weather or schedule changes make the baseline more useful.",
+    ],
+    limit:
+      "A more elaborate routine is not automatically more effective. Persistent discomfort or skin changes deserve professional advice.",
+  },
+  "product-guides": {
+    title: "Choose for your normal day",
+    intro:
+      "A product comparison is most useful when it begins with the setting where the product will actually be used. Think about application time, finish, reapplication, scent and what you are willing to carry or use again.",
+    steps: [
+      "Write down one non-negotiable and one preference before browsing.",
+      "Try the product with the layers and lighting you use most often.",
+      "Assess comfort and usability after several normal uses, not one perfect swatch.",
+    ],
+    limit:
+      "Claims, packaging and ingredient lists are useful evidence, but they cannot replace individual tolerance or appropriate medical care.",
+  },
+  makeup: {
+    title: "Keep the technique proportionate",
+    intro:
+      "Color cosmetics are easier to enjoy when the product has one assignment. A small adjustment to coverage, color or hold often looks more intentional than trying to correct every detail at once.",
+    steps: [
+      "Apply the thinnest useful layer, then step back before adding more.",
+      "Check shade and texture in daylight as well as under indoor light.",
+      "Clean tools regularly and stop using a product that repeatedly causes discomfort.",
+    ],
+    limit:
+      "A cosmetic can change a finish, not diagnose or treat a skin concern. Keep products out of the eyes and follow the label directions.",
+  },
+  "hair-care": {
+    title: "Read the result over several wash days",
+    intro:
+      "Hair care is easier to judge in patterns than in a single wash. Notice the scalp, lengths and styling routine separately, then make one small change that has a clear reason.",
+    steps: [
+      "Decide whether the issue is scalp comfort, buildup, manageability or styling stress.",
+      "Use the same wash pattern for several cycles before changing a second product.",
+      "Apply cleanser to the scalp and conditioner where the lengths need it, unless directions say otherwise.",
+    ],
+    limit:
+      "Pain, persistent scaling, patchy shedding or a sudden density change are not problems a cosmetic routine should be expected to diagnose.",
+  },
+  fragrance: {
+    title: "Wear fragrance in context",
+    intro:
+      "A fragrance is part of a shared environment as well as a personal preference. The best test is a light application on a normal day, with time to notice how it develops and how it feels on the skin.",
+    steps: [
+      "Start with one scent or one clear pairing instead of several competing products.",
+      "Give the dry-down time before deciding whether a bottle suits you.",
+      "Store bottles upright, capped and away from sustained heat and direct light.",
+    ],
+    limit:
+      "Do not apply fragrance over irritated skin. A lighter application is usually the more considerate choice in close or shared spaces.",
+  },
+  journal: {
+    title: "Use the evidence without overreading it",
+    intro:
+      "Beauty information becomes more useful when you separate a product claim, a source and your own experience. That makes it easier to keep a promising idea in proportion without dismissing it automatically.",
+    steps: [
+      "Identify what the source actually supports and what remains an editorial judgment.",
+      "Compare a claim with product directions, packaging and the relevant use case.",
+      "Keep a short note when a product works well or repeatedly causes discomfort.",
+    ],
+    limit:
+      "Educational coverage can clarify a decision, but it cannot replace personal medical advice, a diagnosis or an individual safety assessment.",
+  },
+  "brand-focus": {
+    title: "Separate brand information from the decision",
+    intro:
+      "Brand material can explain a product range, but it should not make the decision by itself. Bring the claimed benefit back to the format, directions, price, your routine and the evidence shown alongside it.",
+    steps: [
+      "Check the exact product and directions rather than relying on a range-level claim.",
+      "Decide what role the product would replace or add to your existing routine.",
+      "Compare official information with independent sources and your own tolerance.",
+    ],
+    limit:
+      "A brand guide is educational and does not verify individual results, pricing or suitability for a medical concern.",
+  },
+};
+
+const guide = guides[collection];
+---
+
+<section class="article-decision-guide" aria-labelledby="decision-guide-heading">
+  <p class="eyebrow">PRACTICAL NEXT STEP</p>
+  <h2 id="decision-guide-heading">{guide.title}</h2>
+  <p>{guide.intro}</p>
+  {
+    focus && (
+      <p>
+        <strong>Use this article to guide:</strong> {focus}.
+      </p>
+    )
+  }
+  <ol>
+    {guide.steps.map((step) => <li>{step}</li>)}
+  </ol>
+  <p>
+    Before making a purchase or adding another step, decide what this change would replace. A
+    smaller, clearer test is easier to evaluate than several new products used at once.
+  </p>
+  <p>
+    Revisit the decision after a few ordinary uses. Keep what is genuinely useful, simplify what is
+    not, and let comfort and practicality carry more weight than a trend or a single swatch.
+  </p>
+  <p><strong>Keep the limit clear:</strong> {guide.limit}</p>
+</section>

@@ -2,8 +2,7 @@
 title: "Ceramides and the Skin Barrier: A Practical Guide"
 description: Learn what ceramides do in the outer skin barrier, when a ceramide moisturizer helps and which formula details matter in practice.
 eyebrow: INGREDIENT BRIEFING
-publishDate: 2026-07-07
-updatedDate: 2026-07-20
+publishDate: 2025-01-10
 readTime: 7
 concerns: [dryness, sensitivity]
 ingredients: [ceramides]

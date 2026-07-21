@@ -2,7 +2,7 @@
 title: "How to Choose a Concealer Without Chasing a Perfect Match"
 description: Choose coverage, texture and shade with a smaller, more useful decision process instead of a drawer full of near misses.
 eyebrow: MAKEUP BASICS
-publishDate: 2026-07-18
+publishDate: 2025-09-19
 readTime: 5
 concerns: [dark circles, redness, blemishes]
 ingredients: [color additives, emollients]

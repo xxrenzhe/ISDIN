@@ -2,8 +2,7 @@
 title: "A Practical Morning Routine for Uneven Skin Tone"
 description: Build a calm, repeatable morning routine for discoloration using antioxidant support, moisturizer and dependable sun protection.
 eyebrow: MORNING ROUTINE
-publishDate: 2026-07-16
-updatedDate: 2026-07-20
+publishDate: 2025-07-04
 readTime: 7
 concerns: [uneven tone, dark spots]
 ingredients: [vitamin C, niacinamide, tranexamic acid]

@@ -2,8 +2,7 @@
 title: "Can Melatonin Work in Topical Skin Care?"
 description: "A clear-eyed guide to melatonin in skincare: what the ingredient can plausibly contribute, what the research does not yet prove and how to use it without overpromising."
 eyebrow: INGREDIENT BRIEFING
-publishDate: 2025-11-06
-updatedDate: 2026-07-21
+publishDate: 2025-12-05
 readTime: 8
 concerns: [photoaging, dullness, sensitivity]
 ingredients: [melatonin, antioxidants]

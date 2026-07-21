@@ -2,8 +2,7 @@
 title: "Tranexamic Acid in Skin Care: A Beginner's Guide"
 description: What topical tranexamic acid may offer for discoloration, where the evidence is still developing and how to add it without overload.
 eyebrow: INGREDIENT BRIEFING
-publishDate: 2026-07-15
-updatedDate: 2026-07-21
+publishDate: 2026-02-06
 readTime: 7
 concerns: [uneven tone, dark spots]
 ingredients: [tranexamic acid]

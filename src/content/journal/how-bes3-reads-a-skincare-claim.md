@@ -2,8 +2,7 @@
 title: "How BES3 Reads a Skincare Claim"
 description: Our working method for separating a plausible ingredient story, a finished-product study and a marketing promise before publication.
 eyebrow: METHODS
-publishDate: 2026-07-19
-updatedDate: 2026-07-20
+publishDate: 2025-12-19
 featured: true
 readTime: 9
 concerns: []

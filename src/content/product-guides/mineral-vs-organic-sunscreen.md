@@ -2,8 +2,7 @@
 title: "Mineral vs Organic Sunscreen Filters"
 description: Compare zinc oxide, titanium dioxide and organic ultraviolet filters by protection, finish, tolerance and the labels that matter most.
 eyebrow: PRODUCT GUIDE
-publishDate: 2026-07-15
-updatedDate: 2026-07-20
+publishDate: 2025-09-05
 readTime: 9
 concerns: [sun damage, sensitivity]
 ingredients: [zinc oxide, titanium dioxide, organic sunscreen filters]

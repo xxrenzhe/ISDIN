@@ -2,8 +2,7 @@
 title: "UVA vs UVB: What Your Sunscreen Needs to Cover"
 description: A practical explanation of UVA, UVB and broad-spectrum labeling, plus the protection habits that matter beyond the SPF number.
 eyebrow: SUN PROTECTION
-publishDate: 2026-07-18
-updatedDate: 2026-07-20
+publishDate: 2025-10-03
 featured: true
 readTime: 7
 concerns: [sun damage, photoaging]

@@ -2,8 +2,7 @@
 title: "Building a Dark-Spot Routine Around Melaclear Advanced"
 description: Place Melaclear Advanced into a restrained discoloration routine using tranexamic acid, niacinamide and consistent sun protection.
 eyebrow: BRAND FOCUS · ROUTINE
-publishDate: 2026-07-15
-updatedDate: 2026-07-21
+publishDate: 2026-03-20
 readTime: 9
 concerns: [dark spots, uneven tone]
 ingredients: [tranexamic acid, niacinamide, licorice root]

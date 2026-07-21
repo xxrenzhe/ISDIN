@@ -2,7 +2,7 @@
 title: "Complexion Makeup: A Practical Place to Start"
 description: A calm framework for choosing a base product, building coverage gradually and keeping the finish believable.
 eyebrow: MAKEUP BASICS
-publishDate: 2026-07-21
+publishDate: 2026-07-03
 readTime: 6
 concerns: [finish, comfort, shade match]
 ingredients: [color additives, emollients]

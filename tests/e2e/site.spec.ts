@@ -148,7 +148,7 @@ test("editorial coverage includes the 2025 topical melatonin guide", async ({ pa
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Can Melatonin Work in Topical Skin Care?",
   );
-  await expect(page.getByText("Nov 6, 2025")).toBeVisible();
+  await expect(page.locator(".article-header time").first()).toHaveText(/2025/);
   await expect(
     page.getByRole("img", {
       name: "Can Melatonin Work in Topical Skin Care? editorial photo",

@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry, type CollectionKey } from "astro:c
 import AffiliateCTA from "@/components/commercial/AffiliateCTA.astro";
 import DisclosureNotice from "@/components/commercial/DisclosureNotice.astro";
 import MerchantLink from "@/components/commercial/MerchantLink.astro";
+import ArticleDecisionGuide from "@/components/content/ArticleDecisionGuide.astro";
 import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
 import RelatedReading from "@/components/content/RelatedReading.astro";
 import Breadcrumbs from "@/components/navigation/Breadcrumbs.astro";
@@ -149,6 +150,12 @@ if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
       </aside>
       <div class="article-body">
         <slot />
+
+        <ArticleDecisionGuide
+          collection={entry.collection as Exclude<CollectionKey, "authors">}
+          concerns={data.concerns}
+          productTypes={data.productTypes}
+        />
 
         {
           ctaLinkId &&

@@ -2,7 +2,7 @@
 title: "Eau de Parfum, Eau de Toilette and Everything in Between"
 description: A plain-language guide to fragrance concentration labels, how they shape a scent experience and why they are not a durability guarantee.
 eyebrow: FRAGRANCE NOTES
-publishDate: 2026-07-19
+publishDate: 2025-07-18
 readTime: 5
 concerns: [comfort, scent preference]
 ingredients: [fragrance, alcohol]

@@ -2,8 +2,7 @@
 title: "Retinal for Beginners: What It Is and How It Differs From Retinol"
 description: Compare two cosmetic retinoids by conversion pathway, evidence, irritation potential and the practical details that shape product choice.
 eyebrow: INGREDIENT BRIEFING
-publishDate: 2026-07-17
-updatedDate: 2026-07-21
+publishDate: 2025-10-17
 featured: true
 readTime: 8
 concerns: [fine lines, uneven tone, blemishes]

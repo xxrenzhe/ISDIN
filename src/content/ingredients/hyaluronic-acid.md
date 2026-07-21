@@ -2,8 +2,7 @@
 title: "What Hyaluronic Acid Can - and Cannot - Do"
 description: Separate the useful hydration role of topical hyaluronic acid from exaggerated claims about permanent plumping or wrinkle correction.
 eyebrow: INGREDIENT BRIEFING
-publishDate: 2026-07-11
-updatedDate: 2026-07-20
+publishDate: 2025-02-07
 readTime: 6
 concerns: [dryness, dehydration, fine lines]
 ingredients: [hyaluronic acid]

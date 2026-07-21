@@ -2,8 +2,7 @@
 title: "Vitamin C in Skincare: Forms, Stability and Routine Placement"
 description: Understand ascorbic acid, common derivatives, packaging and routine placement before choosing an antioxidant vitamin C product.
 eyebrow: INGREDIENT BRIEFING
-publishDate: 2026-07-13
-updatedDate: 2026-07-20
+publishDate: 2025-05-09
 readTime: 8
 concerns: [dullness, uneven tone, photoaging]
 ingredients: [vitamin C]

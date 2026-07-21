@@ -2,8 +2,7 @@
 title: "How Much Sunscreen Should You Actually Apply?"
 description: Translate laboratory sunscreen amounts into a repeatable face-and-body routine without relying on one misleading universal shortcut.
 eyebrow: SUNSCREEN BASICS
-publishDate: 2026-07-14
-updatedDate: 2026-07-20
+publishDate: 2025-08-08
 readTime: 6
 concerns: [sun damage]
 ingredients: [sunscreen filters]

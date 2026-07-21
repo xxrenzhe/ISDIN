@@ -2,8 +2,7 @@
 title: "Eryfotona Actinica vs Ageless: How to Choose"
 description: Compare Eryfotona Actinica and Ageless by tint, zinc oxide level, finish, photoaging claims and the use cases each addresses.
 eyebrow: BRAND FOCUS · COMPARISON
-publishDate: 2026-07-18
-updatedDate: 2026-07-21
+publishDate: 2026-05-22
 readTime: 9
 concerns: [sun damage, photoaging, uneven tone]
 ingredients: [zinc oxide, peptides, vitamin E]

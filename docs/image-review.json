@@ -46,8 +46,20 @@
       "status": "approved"
     },
     {
+      "file": "bes3-cover-fragrance-storage.webp",
+      "sha256": "60a01b3d7b533e3dc17bbc11dfa40ed9b059af5282b458d02b0bb343495d31eb",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
       "file": "bes3-cover-guide-daily-facial-sunscreen.webp",
       "sha256": "506f349b4967248c8a69ae718840b69a932809cbf6aef09b4942b3b7588a4289",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-guide-lip-product.webp",
+      "sha256": "4a790fc4d1d2410dc2e8548b011ca893f85262e1adb3a2868464a9ec322c937c",
       "reviewedAt": "2026-07-21",
       "status": "approved"
     },
@@ -66,6 +78,12 @@
     {
       "file": "bes3-cover-hair-scalp-care.webp",
       "sha256": "8a859e7d5736434f508056fc02444bab0e256cfb9aeae2927d13a7a95448565b",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-hair-shampoo-label.webp",
+      "sha256": "2f2d4fabaf8996235f7f55ff1af5b1abae8bf054cb20decc86fae6ed16c0fcff",
       "reviewedAt": "2026-07-21",
       "status": "approved"
     },
@@ -160,8 +178,20 @@
       "status": "approved"
     },
     {
+      "file": "bes3-cover-journal-ingredient-list.webp",
+      "sha256": "2e1c21c51134cd1f24958fe1c4a79b2384706ee25ccdf839884862a6d9fd37b0",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
       "file": "bes3-cover-journal-claim-method.webp",
       "sha256": "19cd8eada2e0f407991ca0ca8f93e003647b849277c1b747038ecd45e37e5fe3",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-makeup-brow-basics.webp",
+      "sha256": "01f25f93501b4fc4612adec2183536817f582328269cf24aafe50dccdaca4d32",
       "reviewedAt": "2026-07-21",
       "status": "approved"
     },
@@ -178,8 +208,20 @@
       "status": "approved"
     },
     {
+      "file": "bes3-cover-makeup-cream-powder-blush.webp",
+      "sha256": "d47b8ea0c549b5820287b914644a449c231c7154dc67b43b1e9488059eaa220c",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
       "file": "bes3-cover-routine-daily-sun.webp",
       "sha256": "c9b21ec0b0deab7c4f075b20303a9a19554080920775663105e1c92658ef5bdd",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-routine-evening-reset.webp",
+      "sha256": "a78c11d3087f4f219118b1ff0926b81b3ff05bf26d2ca4de4f24b64afe0dc5c5",
       "reviewedAt": "2026-07-21",
       "status": "approved"
     },

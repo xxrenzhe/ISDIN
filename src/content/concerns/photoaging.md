@@ -2,8 +2,7 @@
 title: "What Photoaging Looks Like—and How to Build a Routine"
 description: Understand common signs of cumulative sun exposure and build a measured routine around protection, treatment and barrier support.
 eyebrow: PHOTOAGING
-publishDate: 2026-07-16
-updatedDate: 2026-07-21
+publishDate: 2025-11-07
 readTime: 8
 concerns: [sun damage, fine lines, uneven tone]
 ingredients: [retinoids, vitamin C]

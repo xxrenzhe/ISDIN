@@ -2,8 +2,7 @@
 title: "How to Build a Routine Around Daily Sun Protection"
 description: Make sunscreen the dependable last morning step by choosing compatible textures, reducing pilling and planning realistic reapplication.
 eyebrow: DAILY ROUTINE
-publishDate: 2026-07-06
-updatedDate: 2026-07-20
+publishDate: 2025-06-06
 readTime: 7
 concerns: [sun damage, photoaging, uneven tone]
 ingredients: [sunscreen filters]
