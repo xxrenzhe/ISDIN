@@ -39,21 +39,4 @@ if (!isAffiliate) {
   </div>
 </div>
 
-<script>
-  document.querySelectorAll<HTMLAnchorElement>("[data-affiliate='true']").forEach((link) => {
-    link.addEventListener("click", () => {
-      const container = link.closest<HTMLElement>("[data-link-id]");
-      if (!container) return;
-      document.dispatchEvent(
-        new CustomEvent("bes3:affiliate-click", {
-          detail: {
-            linkId: container.dataset.linkId,
-            placement: container.dataset.placement,
-            brand: link.dataset.brand,
-            article: link.dataset.article,
-          },
-        }),
-      );
-    });
-  });
-</script>
+<script is:inline src="/affiliate-cta.js"></script>
