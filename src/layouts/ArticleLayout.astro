@@ -84,6 +84,7 @@ const relatedEntries = allEntries
     title: related.data.title,
     eyebrow: related.data.eyebrow || collectionMeta[related.collection].label,
   }));
+const usesFictionalProductProps = collection === "brand-focus" && entry.id.startsWith("isdin/");
 
 if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
   throw new Error(`Affiliate article requires an approved affiliate link: ${entry.id}`);
@@ -116,6 +117,13 @@ if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
         artworkKey={`${entry.collection}/${entry.id}`}
         label={`${data.title} editorial photo`}
       />
+      {
+        usesFictionalProductProps && (
+          <p class="editorial-image-note">
+            Where product packaging appears, it is a fictional editorial prop—not an ISDIN product.
+          </p>
+        )
+      }
     </div>
 
     {

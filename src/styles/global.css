@@ -499,6 +499,13 @@ h3 {
   object-fit: cover;
 }
 
+.editorial-image-note {
+  max-width: 72ch;
+  margin: var(--space-3) 0 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
 .art-bg {
   fill: #dce5e0;
 }
