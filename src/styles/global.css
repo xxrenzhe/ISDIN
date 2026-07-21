@@ -75,10 +75,16 @@ select {
 a {
   color: inherit;
   text-underline-offset: 0.18em;
+  touch-action: manipulation;
 }
 
 a:hover {
   color: var(--mineral-dark);
+}
+
+button,
+summary {
+  touch-action: manipulation;
 }
 
 :focus-visible {
@@ -201,7 +207,7 @@ h3 {
   transition: transform 150ms ease;
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
   transform: translateY(0);
 }
 

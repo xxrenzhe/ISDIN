@@ -1,27 +1,58 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const effectiveDate = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "long",
+  timeZone: "UTC",
+}).format(new Date("2026-07-21T00:00:00Z"));
 ---
 
-<BaseLayout title="Privacy" description="The BES3 privacy notice.">
+<BaseLayout
+  title="Privacy"
+  description="How BES3 handles the limited information connected with a visit to the site."
+>
   <section class="page-hero shell">
     <div><p class="eyebrow">LEGAL</p><h1>Privacy, in plain language.</h1></div><p class="lede">
-      This page must be updated before launch to match the actual analytics, hosting, newsletter and
-      form providers used by BES3.
+      BES3 is designed to be read without creating an account or sharing personal information.
     </p>
   </section>
   <section class="section reading-width article-body">
-    <h2>What the static site stores</h2><p>
-      The initial static site should not require accounts and should collect only the data needed
-      for an explicitly requested contact or newsletter subscription.
+    <p><strong>Effective date: <time datetime="2026-07-21">{effectiveDate}</time></strong></p>
+    <h2>Information we collect</h2><p>
+      BES3 does not offer user accounts, comments, a newsletter sign-up or a contact form. You can
+      browse the site without directly providing us with your name, email address or payment
+      information.
     </p>
-    <h2>Analytics</h2><p>
-      Use privacy-conscious, aggregated analytics. If a provider uses cookies or processes personal
-      data, name it here before production launch and provide the required consent controls.
+    <h2>Hosting and essential technical data</h2><p>
+      BES3 is delivered through Cloudflare Pages. Like most web hosts, Cloudflare may process
+      limited technical information, such as an IP address, browser details and request data, to
+      deliver and protect the site. BES3 does not add advertising, marketing or analytics cookies to
+      its pages. Cloudflare's handling of information is described in its{" "}
+      <a href="https://www.cloudflare.com/privacypolicy/">Privacy Policy</a>.
     </p>
-    <h2>Commercial link events</h2><p>
-      Outbound click measurement must not include names, email addresses or user identifiers. It
-      should record only the article, placement and link category needed to understand editorial
-      performance.
+    <h2>Email you choose to send</h2><p>
+      If you email the editorial desk, we receive the information included in your message and use
+      it only to review, respond to or follow up on your request. Keep sensitive health or personal
+      information out of email where possible.
+    </p>
+    <h2>Links to other sites</h2><p>
+      Articles may link to manufacturers, retailers, research sources and other third-party sites.
+      Those sites have their own privacy practices. Once you leave BES3, review the privacy notice
+      of the destination you visit.
+    </p>
+    <h2>Commercial links</h2><p>
+      Some links may be affiliate links, meaning BES3 may earn a commission if a purchase is made.
+      This does not change the price for you or the way we make editorial decisions. Read our
+      {" "}<a href="/affiliate-disclosure/">affiliate disclosure</a> for details.
+    </p>
+    <h2>Your choices</h2><p>
+      To ask about or request deletion of information you have sent to us by email, contact the
+      editorial desk. We will review the request in line with applicable law and our need to retain
+      correspondence for legitimate editorial or legal purposes.
+    </p>
+    <h2>Changes to this notice</h2><p>
+      If our information practices change, we will update this page and its effective date before
+      applying the new practice.
     </p>
     <h2>Contact</h2><p>
       Privacy questions can be sent to <a href="mailto:editorial@bes3.com">editorial@bes3.com</a>.

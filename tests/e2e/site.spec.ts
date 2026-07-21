@@ -47,3 +47,22 @@ test("ISDIN merchant links stay editorial before affiliate approval", async ({ p
   await expect(articleCta).toHaveAttribute("data-merchant-link", "true");
   await expect(page.getByLabel("affiliate disclosure")).toHaveCount(0);
 });
+
+test("privacy page provides a current reader-facing notice", async ({ page }) => {
+  await page.goto("/privacy/");
+
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Privacy, in plain language.");
+  await expect(page.getByRole("heading", { name: "Information we collect" })).toBeVisible();
+  await expect(page.getByText("This page must be updated before launch")).toHaveCount(0);
+  await expect(page.locator("main")).toContainText(
+    "Cloudflare's handling of information is described in its Privacy Policy.",
+  );
+  await expect(page.locator("main")).toContainText("Read our affiliate disclosure for details.");
+  await expect(page.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
+    "href",
+    "https://www.cloudflare.com/privacypolicy/",
+  );
+
+  const results = await new AxeBuilder({ page }).include("main").analyze();
+  expect(results.violations).toEqual([]);
+});

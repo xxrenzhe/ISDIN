@@ -19,7 +19,8 @@
     "test:e2e": "playwright test",
     "check:links": "node scripts/check-links.mjs",
     "check:affiliate-links": "node scripts/check-affiliate-links.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build && npm run check:links && npm run check:affiliate-links"
+    "check:public-content": "node scripts/check-public-content.mjs",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build && npm run check:links && npm run check:affiliate-links && npm run check:public-content"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",
