@@ -10,6 +10,7 @@ import hyaluronicAcid from "@/assets/images/bes3-cover-ingredient-hyaluronic-aci
 import isdinHub from "@/assets/images/bes3-cover-isdin-hub.webp";
 import melaclear from "@/assets/images/bes3-cover-isdin-melaclear.webp";
 import melatonik from "@/assets/images/bes3-cover-isdin-melatonik.webp";
+import topicalMelatonin from "@/assets/images/bes3-cover-ingredient-melatonin.webp";
 import mineralOrganic from "@/assets/images/bes3-cover-guide-mineral-organic.webp";
 import minimalSensitive from "@/assets/images/bes3-cover-routine-minimal-sensitive.webp";
 import morningUnevenTone from "@/assets/images/bes3-cover-routine-morning-uneven-tone.webp";
@@ -41,6 +42,7 @@ export const articleArtwork: Record<string, ImageMetadata> = {
   "home-brand-focus": homeBrandFocus,
   "ingredients/ceramides": ceramides,
   "ingredients/hyaluronic-acid": hyaluronicAcid,
+  "ingredients/melatonin-topical-skincare": topicalMelatonin,
   "ingredients/niacinamide": niacinamide,
   "ingredients/retinal-vs-retinol": retinalRetinol,
   "ingredients/tranexamic-acid": tranexamicAcid,

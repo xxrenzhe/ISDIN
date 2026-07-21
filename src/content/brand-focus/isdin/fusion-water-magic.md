@@ -1,9 +1,9 @@
 ---
-title: "ISDIN Fusion Water MAGIC: Texture, Filters and Who It May Suit"
+title: "ISDIN Fusion Water MAGIC: Who Is It Best For?"
 description: A claims-based guide to Fusion Water MAGIC SPF 40, focusing on its fluid finish, supporting ingredients and daily-use tradeoffs.
 eyebrow: BRAND FOCUS · PRODUCT GUIDE
 publishDate: 2026-07-19
-updatedDate: 2026-07-20
+updatedDate: 2026-07-21
 readTime: 8
 concerns: [sun damage, photoaging]
 ingredients: [sunscreen filters, hyaluronic acid, vitamin E]
@@ -13,7 +13,6 @@ disclosure: none
 brand: isdin
 brandFocusType: product-guide
 ctaLinkIds: [isdin-fusion-water]
-reviewDueDate: 2027-01-20
 heroVariant: mist
 sources:
   - label: ISDIN U.S. - Fusion Water MAGIC SPF 40

@@ -1,9 +1,9 @@
 ---
-title: "Can You Use Vitamin C and Retinal in the Same Routine?"
+title: "How to Combine Retinal, Vitamin C and Sunscreen"
 description: Yes, often - but separating vitamin C and retinal can improve comfort, stability and adherence without sacrificing the larger plan.
 eyebrow: INGREDIENT PAIRING
 publishDate: 2026-07-12
-updatedDate: 2026-07-20
+updatedDate: 2026-07-21
 readTime: 6
 concerns: [photoaging, uneven tone]
 ingredients: [vitamin C, retinal]

@@ -11,7 +11,7 @@ const imageImports = [...registrySource.matchAll(/from "@\/assets\/images\/([^"\
 
 describe("article artwork", () => {
   it("assigns a distinct photo to every editorial and feature entry", () => {
-    expect(imageImports).toHaveLength(26);
+    expect(imageImports).toHaveLength(27);
     expect(new Set(imageImports).size).toBe(imageImports.length);
   });
 

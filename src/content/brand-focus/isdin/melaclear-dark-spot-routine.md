@@ -1,9 +1,9 @@
 ---
-title: "Building a Dark-Spot Routine with ISDIN Melaclear Advanced"
+title: "Building a Dark-Spot Routine Around Melaclear Advanced"
 description: Place Melaclear Advanced into a restrained discoloration routine using tranexamic acid, niacinamide and consistent sun protection.
 eyebrow: BRAND FOCUS · ROUTINE
 publishDate: 2026-07-15
-updatedDate: 2026-07-20
+updatedDate: 2026-07-21
 readTime: 9
 concerns: [dark spots, uneven tone]
 ingredients: [tranexamic acid, niacinamide, licorice root]
@@ -13,7 +13,6 @@ disclosure: none
 brand: isdin
 brandFocusType: routine-feature
 ctaLinkIds: [isdin-melaclear]
-reviewDueDate: 2027-01-20
 heroVariant: mist
 sources:
   - label: ISDIN U.S. - Melaclear Advanced

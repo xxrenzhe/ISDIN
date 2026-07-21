@@ -1,9 +1,9 @@
 ---
-title: "ISDIN Actinica vs Ageless: How the Mineral Sunscreens Compare"
+title: "Eryfotona Actinica vs Ageless: How to Choose"
 description: Compare Eryfotona Actinica and Ageless by tint, zinc oxide level, finish, photoaging claims and the use cases each addresses.
 eyebrow: BRAND FOCUS · COMPARISON
 publishDate: 2026-07-18
-updatedDate: 2026-07-20
+updatedDate: 2026-07-21
 readTime: 9
 concerns: [sun damage, photoaging, uneven tone]
 ingredients: [zinc oxide, peptides, vitamin E]
@@ -13,7 +13,6 @@ disclosure: none
 brand: isdin
 brandFocusType: product-guide
 ctaLinkIds: [isdin-ageless]
-reviewDueDate: 2027-01-20
 heroVariant: clay
 sources:
   - label: ISDIN U.S. - Eryfotona Actinica SPF 50+

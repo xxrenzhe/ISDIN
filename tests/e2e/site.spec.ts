@@ -66,3 +66,25 @@ test("privacy page provides a current reader-facing notice", async ({ page }) =>
   const results = await new AxeBuilder({ page }).include("main").analyze();
   expect(results.violations).toEqual([]);
 });
+
+test("editorial coverage includes the 2025 topical melatonin guide", async ({ page }) => {
+  await page.goto("/ingredients/");
+
+  await expect(
+    page.getByRole("link", { name: "Can Melatonin Work in Topical Skin Care?" }),
+  ).toHaveAttribute("href", "/ingredients/melatonin-topical-skincare/");
+
+  await page.goto("/ingredients/melatonin-topical-skincare/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Can Melatonin Work in Topical Skin Care?",
+  );
+  await expect(page.getByText("Nov 6, 2025")).toBeVisible();
+  await expect(
+    page.getByRole("img", {
+      name: "Can Melatonin Work in Topical Skin Care? editorial photo",
+    }),
+  ).toBeVisible();
+
+  const results = await new AxeBuilder({ page }).include("main").analyze();
+  expect(results.violations).toEqual([]);
+});

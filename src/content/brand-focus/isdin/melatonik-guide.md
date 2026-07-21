@@ -1,9 +1,9 @@
 ---
-title: "ISDIN Melatonik: An Overnight Recovery Serum Guide"
+title: "Melatonik: Melatonin, Vitamin C and Overnight Skin Care"
 description: A measured guide to Melatonik's serum-in-oil format, melatonin, bakuchiol and vitamin C, with fit and routine-placement advice.
 eyebrow: BRAND FOCUS · PRODUCT GUIDE
 publishDate: 2026-07-17
-updatedDate: 2026-07-20
+updatedDate: 2026-07-21
 readTime: 8
 concerns: [dullness, dryness, photoaging]
 ingredients: [melatonin, bakuchiol, vitamin C]
@@ -13,7 +13,6 @@ disclosure: none
 brand: isdin
 brandFocusType: product-guide
 ctaLinkIds: [isdin-melatonik]
-reviewDueDate: 2027-01-20
 heroVariant: ink
 sources:
   - label: ISDIN U.S. - Melatonik

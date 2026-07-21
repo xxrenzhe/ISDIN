@@ -1,9 +1,9 @@
 ---
-title: "ISDIN Retinal Advanced: Who It Is For and How to Use It"
+title: "Retinal Advanced Ingredient and Routine Guide"
 description: A formula and claims guide to ISDIN Retinal Advanced, its dual-phase format, retinaldehyde and the pacing needed for retinoid use.
 eyebrow: BRAND FOCUS · PRODUCT GUIDE
 publishDate: 2026-07-16
-updatedDate: 2026-07-20
+updatedDate: 2026-07-21
 readTime: 9
 concerns: [fine lines, uneven tone, photoaging]
 ingredients: [retinaldehyde, melatonin, bakuchiol]
@@ -13,7 +13,6 @@ disclosure: none
 brand: isdin
 brandFocusType: product-guide
 ctaLinkIds: [isdin-retinal-advanced]
-reviewDueDate: 2027-01-20
 heroVariant: clay
 sources:
   - label: ISDIN U.S. - Retinal Advanced
