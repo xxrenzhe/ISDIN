@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist && cp -R dist/pagefind dist/pagefind-v20260721",
     "preview": "astro preview",
     "typecheck": "astro check",
     "lint": "eslint .",

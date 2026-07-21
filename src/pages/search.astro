@@ -14,17 +14,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <div id="search" class="search-box" aria-label="BES3 search"></div>
     </div>
   </section>
-  <script is:inline>
-    const mount = document.querySelector("#search");
-    if (mount) {
-      import("/pagefind/pagefind-ui.js")
-        .then(({ PagefindUI }) => {
-          new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
-        })
-        .catch(() => {
-          mount.innerHTML =
-            '<p>Search is available after the first production build. Browse the <a href="/journal/">journal</a> meanwhile.</p>';
-        });
-    }
-  </script>
+  <script is:inline src="/pagefind-v20260721/pagefind-ui.js"></script>
+  <script is:inline src="/pagefind-search.js?v=20260721"></script>
 </BaseLayout>

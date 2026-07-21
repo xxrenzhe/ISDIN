@@ -1205,7 +1205,7 @@ ISDIN Brand Focus 内容必须设置 `brand: "isdin"`、正确的 `brandFocusTyp
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-Frame-Options: DENY
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 ```
 
 CSP 应根据实际 Analytics、Newsletter 和图片来源逐项放行，不能长期使用 `*`。如果表单提交到第三方，需要调整 `form-action` 或 `connect-src`。
