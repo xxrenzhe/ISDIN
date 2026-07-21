@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "BES3 Editorial visual QA",
+  "approvedChecks": [
+    "anatomy",
+    "hands-and-objects",
+    "perspective-and-reflections",
+    "product-branding",
+    "text-and-watermarks"
+  ],
+  "assets": [
+    {
+      "file": "bes3-cover-concern-photoaging.webp",
+      "sha256": "b8b47c7c44a3f99c27af9221f0d56224bb239e47d9b5dd331df2034a63c8a8cc",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-concern-sunscreen-amount.webp",
+      "sha256": "fd2cbc4482912a32bc6a33eb6bd9266427d4348472034652397eefa9f7f69b81",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-concern-uneven-tone.webp",
+      "sha256": "1222977c024dad53dee97ab54a2a8f2e13f23865538ae5111dd0c2d27a972042",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-concern-uva-uvb.webp",
+      "sha256": "a1bcebe2661ee212f082c9bf3e333fd623779e479f98732d3895f9bb6fbd7fb3",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-fragrance-concentrations.webp",
+      "sha256": "3ddbea97b12c4bad29851f15a79020a8dd98b8f395b988e3189b420484726301",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-fragrance-layering.webp",
+      "sha256": "dcee8c4b7970226549c35d6210db993c6994703ecebc073673b61cf4adb883f4",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-guide-daily-facial-sunscreen.webp",
+      "sha256": "506f349b4967248c8a69ae718840b69a932809cbf6aef09b4942b3b7588a4289",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-guide-mineral-organic.webp",
+      "sha256": "691440951213a808fb1679b38979fc6de0c9a68b314a0b7b3bc6598ea997bdc5",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-hair-heat-styling.webp",
+      "sha256": "a1ea8f4f159416fb7b72cdea7b78b0bd4ddd6780eaacfab9fdbf0a9e78b920e4",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-hair-scalp-care.webp",
+      "sha256": "8a859e7d5736434f508056fc02444bab0e256cfb9aeae2927d13a7a95448565b",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-home-brand-focus.webp",
+      "sha256": "e5a76f73a2ae571acab735e2a20d718ac7294199338d7e204438c9eb6fca9813",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-ingredient-ceramides.webp",
+      "sha256": "dd2908826590daa68f1d1966857aa835e52e215301d65c99c80722bcd4b566c6",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-ingredient-hyaluronic-acid.webp",
+      "sha256": "506cc26e46a95926c72b300044ccfb70edaa426300663327324b6ed30f6b76c9",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-ingredient-melatonin.webp",
+      "sha256": "0c4c551fcfc7828ecf12850b82a1c8ed2f6e522f5e1942750b207d753c3f5ca9",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-ingredient-niacinamide.webp",
+      "sha256": "92d13026ef3fa83c8a67b23224cdfa8b62e118c7969fee58ceca888e8d396b66",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-ingredient-retinal-retinol.webp",
+      "sha256": "7c3c4ead7c47322fd86633c4085b29aaa697abf23ba3da9533c57424dcdf533f",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-ingredient-tranexamic-acid.webp",
+      "sha256": "54b158c950ab5b2aed2ee2b8427fdf2d082e233e22024386241610ad381c2005",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-ingredient-vitamin-c.webp",
+      "sha256": "98132a7f7a8c6304dd542a817d1b59d6e5d67e2fbbee74731eee46f6b489675f",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-isdin-actinica-ageless.webp",
+      "sha256": "f9ca061368faf1a0d952c4271e370a608ca12247a7db7dbb5428dfd7141e6881",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-isdin-brand-guide.webp",
+      "sha256": "10972a889aab72c918696ac944e0dcf4c84544e4a0363043b2ca6fb2ecf47214",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-isdin-fusion-water.webp",
+      "sha256": "1785638596264a9e44df5850c803bda788f98559f62a0105017851854f74ff6e",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-isdin-hub.webp",
+      "sha256": "9f973aaf3dd7dd7732a4045e0c8bf81c9664459dd912bf309e1e0a2158a24ca5",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-isdin-melaclear.webp",
+      "sha256": "484acea0a6d84fd86031f3407be7e73f080a72a0635d682ea2200d7c79818256",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-isdin-melatonik.webp",
+      "sha256": "5c313ab73b2c381377a9a0cb3fd25ae5a17ea6bc32ff954217a8005ebf4c02bf",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-isdin-retinal-advanced.webp",
+      "sha256": "8eeb7741b4d85b5bf6145a62484b79beb3ddb49d81d31646caa71ba04d346dd4",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-journal-claim-method.webp",
+      "sha256": "19cd8eada2e0f407991ca0ca8f93e003647b849277c1b747038ecd45e37e5fe3",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-makeup-complexion.webp",
+      "sha256": "291cbbc84672eebaa6539382ff47a09d632468dab85807fbb45dad5f4cb6c5d6",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-makeup-concealer.webp",
+      "sha256": "80e9ee79ed3bd51b2608d75cae8eb134cb8ff2c15d632a6ce4c39ebeae70efad",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-routine-daily-sun.webp",
+      "sha256": "c9b21ec0b0deab7c4f075b20303a9a19554080920775663105e1c92658ef5bdd",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-routine-introduce-retinoid.webp",
+      "sha256": "b9e34d51405229edde4936ae602dee20372b90f5b5833c5141f92811625cf517",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-routine-minimal-sensitive.webp",
+      "sha256": "b292e575476ad1410c16e87de450c792fe516119609a86e65ffed77752a0af10",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-routine-morning-uneven-tone.webp",
+      "sha256": "b350f8f215b6feeb5be1116fd3a53832ca8d4b847269b453e44aa481d4a64541",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-cover-routine-vitamin-c-retinal.webp",
+      "sha256": "adad7bc541ca65599b75b4903322c6c40f6305a451c37fb988afdf5a1e9b4f8c",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-home-beauty.webp",
+      "sha256": "719fa53c526389632ae33dbdd2454610b54d9333d7750859307052efb1e71d5a",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    },
+    {
+      "file": "bes3-home-routine-v3.webp",
+      "sha256": "b9d2048a1f6c101bcfb25672a44e594167669d391067e74dd82f55db65886b9b",
+      "reviewedAt": "2026-07-21",
+      "status": "approved"
+    }
+  ]
+}
