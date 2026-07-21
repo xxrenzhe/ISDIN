@@ -1,12 +1,14 @@
 ---
-import type { CollectionEntry, CollectionKey } from "astro:content";
+import { getCollection, type CollectionEntry, type CollectionKey } from "astro:content";
 import AffiliateCTA from "@/components/commercial/AffiliateCTA.astro";
 import DisclosureNotice from "@/components/commercial/DisclosureNotice.astro";
 import MerchantLink from "@/components/commercial/MerchantLink.astro";
 import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
+import RelatedReading from "@/components/content/RelatedReading.astro";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs.astro";
 import { getIsdinLink } from "@/data/affiliate-links/isdin";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { formatDate } from "@/utils/content";
+import { contentHref, formatDate } from "@/utils/content";
 
 interface Props {
   entry: CollectionEntry<CollectionKey>;
@@ -22,14 +24,81 @@ const articleSlug =
     .replace(/\.(md|mdx)$/, "")
     .split("/")
     .at(-1) || entry.id;
+const collectionMeta = {
+  concerns: { label: "Concerns", href: "/concerns/" },
+  ingredients: { label: "Ingredients", href: "/ingredients/" },
+  routines: { label: "Routines", href: "/routines/" },
+  "product-guides": { label: "Product guides", href: "/product-guides/" },
+  journal: { label: "Journal", href: "/journal/" },
+  "brand-focus": { label: "Brand focus", href: "/brand-focus/" },
+} as const;
+const collection = entry.collection as keyof typeof collectionMeta;
+const parent = collectionMeta[collection];
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  ...(collection === "brand-focus" && entry.id.startsWith("isdin/")
+    ? [
+        { label: parent.label, href: parent.href },
+        { label: "ISDIN", href: "/brand-focus/isdin/" },
+      ]
+    : [{ label: parent.label, href: parent.href }]),
+  { label: data.title },
+];
+const collections = [
+  "concerns",
+  "ingredients",
+  "routines",
+  "product-guides",
+  "journal",
+  "brand-focus",
+] as const;
+const allEntries = (
+  await Promise.all(
+    collections.map((name) => getCollection(name, ({ data: candidate }) => !candidate.draft)),
+  )
+).flat();
+const matchTerms = new Set([
+  ...data.tags,
+  ...data.concerns,
+  ...data.ingredients,
+  ...data.productTypes,
+]);
+const relatedEntries = allEntries
+  .filter((candidate) => candidate.collection !== entry.collection || candidate.id !== entry.id)
+  .map((candidate) => ({
+    entry: candidate,
+    score: [
+      ...candidate.data.tags,
+      ...candidate.data.concerns,
+      ...candidate.data.ingredients,
+      ...candidate.data.productTypes,
+    ].filter((term) => matchTerms.has(term)).length,
+  }))
+  .sort(
+    (a, b) =>
+      b.score - a.score || b.entry.data.publishDate.valueOf() - a.entry.data.publishDate.valueOf(),
+  )
+  .slice(0, 3)
+  .map(({ entry: related }) => ({
+    href: contentHref(related),
+    title: related.data.title,
+    eyebrow: related.data.eyebrow || collectionMeta[related.collection].label,
+  }));
 
 if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
   throw new Error(`Affiliate article requires an approved affiliate link: ${entry.id}`);
 }
 ---
 
-<BaseLayout title={data.title} description={data.description} type="article">
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  type="article"
+  article={{ publishedDate: data.publishDate, modifiedDate: updated, author: "BES3 Editorial" }}
+  {breadcrumbs}
+>
   <article>
+    <Breadcrumbs items={breadcrumbs} />
     <header class="article-header shell">
       <p class="eyebrow">{data.eyebrow || entry.collection.replace("-", " ")}</p>
       <h1>{data.title}</h1>
@@ -75,6 +144,8 @@ if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
               <MerchantLink linkId={ctaLinkId} placement="article-end" articleSlug={articleSlug} />
             ))
         }
+
+        <RelatedReading items={relatedEntries} />
 
         <section class="sources" aria-labelledby="sources-heading">
           <h2 id="sources-heading">Sources</h2>

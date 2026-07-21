@@ -24,7 +24,7 @@ interface Props {
 const { title, eyebrow, description, items, layout = "catalogue" } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} pageType="CollectionPage">
   <div class:list={["collection-index", `collection-index--${layout}`]}>
     <PageHero {title} {eyebrow} {description} />
     <section class="section shell">

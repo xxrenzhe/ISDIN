@@ -2,17 +2,15 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Page not found" description="This BES3 page is no longer available.">
+<BaseLayout title="Page not found" description="This BES3 page is no longer available." noindex>
   <section class="section shell reading-width">
-    <p class="eyebrow">404 · OUT OF THE ARCHIVE</p><h1>This page is no longer on the shelf.</h1><p
-      class="lede"
-    >
-      Try the search page or start with a concern, ingredient or routine.
-    </p><div class="hero__actions">
-      <a class="button button--primary" href="/search/">Search BES3</a><a
-        class="button button--secondary"
-        href="/ingredients/">Browse ingredients</a
-      >
+    <p class="eyebrow">404 · OUT OF THE ARCHIVE</p>
+    <h1>This page is no longer on the shelf.</h1>
+    <p class="lede">Try the search page or start with a concern, ingredient or routine.</p>
+    <div class="hero__actions">
+      <a class="button button--primary" href="/search/">Search BES3</a>
+      <a class="button button--secondary" href="/ingredients/">Browse ingredients</a>
+      <a class="button button--secondary" href="/routines/">Browse routines</a>
     </div>
   </section>
 </BaseLayout>

@@ -49,3 +49,26 @@ const isActive = (href: string) =>
     </div>
   </div>
 </header>
+
+<script>
+  const mobileMenu = document.querySelector<HTMLDetailsElement>(".mobile-menu");
+
+  if (mobileMenu) {
+    const menuTrigger = mobileMenu.querySelector<HTMLElement>("summary");
+    const closeMenu = () => {
+      mobileMenu.open = false;
+    };
+    const syncMenuState = () => {
+      document.body.classList.toggle("mobile-menu-open", mobileMenu.open);
+    };
+
+    mobileMenu.addEventListener("toggle", syncMenuState);
+    mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileMenu.open) {
+        closeMenu();
+        menuTrigger?.focus();
+      }
+    });
+  }
+</script>

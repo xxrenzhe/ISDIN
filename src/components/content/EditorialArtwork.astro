@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import { getArtwork } from "@/data/article-artwork";
 
 interface Props {
@@ -10,8 +10,20 @@ interface Props {
 
 const { artworkKey, label = "BES3 editorial photo", compact = false } = Astro.props;
 const artwork = getArtwork(artworkKey);
+const widths = compact ? [480, 720, 960] : [720, 960, 1280];
+const sizes = compact
+  ? "(max-width: 640px) calc(100vw - 40px), (max-width: 980px) calc(50vw - 32px), 33vw"
+  : "(max-width: 980px) calc(100vw - 40px), min(720px, 58vw)";
 ---
 
 <figure class:list={["editorial-art", { "editorial-art--compact": compact }]}>
-  <Image src={artwork} alt={label} loading={compact ? "lazy" : "eager"} decoding="async" />
+  <Picture
+    src={artwork}
+    {widths}
+    formats={["avif", "webp"]}
+    {sizes}
+    alt={label}
+    loading={compact ? "lazy" : "eager"}
+    decoding="async"
+  />
 </figure>

@@ -33,6 +33,37 @@ test("mobile navigation reaches the concerns index", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Skin concerns");
 });
 
+test("mobile menu locks the page and closes with Escape", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.goto("/");
+
+  const menu = page.locator(".mobile-menu");
+  const trigger = page.getByLabel("Open site menu");
+  await trigger.click();
+  await expect(menu).toHaveAttribute("open", "");
+  await expect(page.locator("body")).toHaveClass(/mobile-menu-open/);
+
+  await page.keyboard.press("Escape");
+  await expect(menu).not.toHaveAttribute("open", "");
+  await expect(page.locator("body")).not.toHaveClass(/mobile-menu-open/);
+  await expect(trigger).toBeFocused();
+});
+
+test("the home page has no horizontal overflow at required breakpoints", async ({ page }) => {
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 768, height: 1024 },
+    { width: 1024, height: 768 },
+    { width: 1440, height: 900 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/");
+    expect(
+      await page.locator("html").evaluate((element) => element.scrollWidth <= element.clientWidth),
+    ).toBe(true);
+  }
+});
+
 test("ISDIN merchant links stay editorial before affiliate approval", async ({ page }) => {
   await page.goto("/brand-focus/isdin/");
 
@@ -87,4 +118,46 @@ test("editorial coverage includes the 2025 topical melatonin guide", async ({ pa
 
   const results = await new AxeBuilder({ page }).include("main").analyze();
   expect(results.violations).toEqual([]);
+});
+
+test("articles provide breadcrumb, related-reading and structured-data paths", async ({ page }) => {
+  await page.goto("/ingredients/melatonin-topical-skincare/");
+
+  const breadcrumb = page.getByRole("navigation", { name: "Breadcrumb" });
+  await expect(breadcrumb.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
+  await expect(breadcrumb.getByRole("link", { name: "Ingredients" })).toHaveAttribute(
+    "href",
+    "/ingredients/",
+  );
+  await expect(breadcrumb.getByText("Can Melatonin Work in Topical Skin Care?")).toBeVisible();
+
+  const relatedReading = page.getByRole("heading", {
+    name: "Continue with a connected guide.",
+  });
+  await expect(relatedReading).toBeVisible();
+  await expect(page.locator(".related-reading a")).toHaveCount(3);
+
+  const schema = await page
+    .locator('script[type="application/ld+json"]')
+    .evaluate((element) => JSON.parse(element.textContent || "{}"));
+  expect(schema["@graph"].some((item: { "@type": string }) => item["@type"] === "Article")).toBe(
+    true,
+  );
+  expect(
+    schema["@graph"].some((item: { "@type": string }) => item["@type"] === "BreadcrumbList"),
+  ).toBe(true);
+});
+
+test("the 404 page remains noindex and offers three useful exits", async ({ page }) => {
+  const response = await page.goto("/out-of-the-archive/");
+
+  expect(response?.status()).toBe(404);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "This page is no longer on the shelf.",
+  );
+  const main = page.locator("main");
+  await expect(main.getByRole("link", { name: "Search BES3" })).toBeVisible();
+  await expect(main.getByRole("link", { name: "Browse ingredients" })).toBeVisible();
+  await expect(main.getByRole("link", { name: "Browse routines" })).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex,nofollow");
 });

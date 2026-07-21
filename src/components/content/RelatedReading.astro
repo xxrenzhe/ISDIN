@@ -1,0 +1,40 @@
+---
+interface Item {
+  href: string;
+  title: string;
+  eyebrow: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="related-reading" aria-labelledby="related-reading-heading">
+      <div class="related-reading__heading">
+        <p class="eyebrow">KEEP READING</p>
+        <h2 id="related-reading-heading">Continue with a connected guide.</h2>
+      </div>
+      <ol>
+        {items.map((item, index) => (
+          <li>
+            <a href={item.href}>
+              <span aria-hidden="true">0{index + 1}</span>
+              <span>
+                <small>{item.eyebrow}</small>
+                <strong>{item.title}</strong>
+              </span>
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h11M11 5l5 5-5 5" />
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
