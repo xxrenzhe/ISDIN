@@ -1,0 +1,196 @@
+---
+import type { CollectionKey } from "astro:content";
+
+type EditorialCollection = Exclude<CollectionKey, "authors">;
+
+interface TopicLink {
+  href: string;
+  label: string;
+  description: string;
+}
+
+interface Props {
+  collection: EditorialCollection;
+}
+
+const { collection } = Astro.props;
+const routes: Record<EditorialCollection, TopicLink[]> = {
+  concerns: [
+    {
+      href: "/ingredients/",
+      label: "Explore ingredients",
+      description: "Learn what a formula can contribute.",
+    },
+    {
+      href: "/routines/",
+      label: "Build a routine",
+      description: "Put the next step into a repeatable order.",
+    },
+    {
+      href: "/product-guides/",
+      label: "Compare formats",
+      description: "Choose a category before adding a product.",
+    },
+  ],
+  ingredients: [
+    {
+      href: "/concerns/",
+      label: "Start with the concern",
+      description: "Connect an ingredient to the change you notice.",
+    },
+    {
+      href: "/routines/",
+      label: "Place it in a routine",
+      description: "Keep a useful sequence simple.",
+    },
+    {
+      href: "/product-guides/",
+      label: "Compare product roles",
+      description: "See how formats affect everyday use.",
+    },
+  ],
+  routines: [
+    {
+      href: "/concerns/",
+      label: "Understand the concern",
+      description: "Keep the routine tied to a real observation.",
+    },
+    {
+      href: "/ingredients/",
+      label: "Read the ingredients",
+      description: "Know what each active is being asked to do.",
+    },
+    {
+      href: "/product-guides/",
+      label: "Choose the format",
+      description: "Find a product role that fits your normal day.",
+    },
+  ],
+  "product-guides": [
+    {
+      href: "/ingredients/",
+      label: "Read the formula",
+      description: "Put an ingredient list in context.",
+    },
+    {
+      href: "/routines/",
+      label: "Fit it into a routine",
+      description: "Decide what the new product would replace.",
+    },
+    {
+      href: "/concerns/",
+      label: "Return to the concern",
+      description: "Keep the choice proportionate to the goal.",
+    },
+  ],
+  makeup: [
+    {
+      href: "/beauty/",
+      label: "Browse the beauty guide",
+      description: "Move between makeup, hair and fragrance coverage.",
+    },
+    {
+      href: "/skincare/",
+      label: "Prepare the base",
+      description: "Find skincare context for everyday makeup.",
+    },
+    {
+      href: "/journal/",
+      label: "Read the method",
+      description: "See how BES3 weighs claims and choices.",
+    },
+  ],
+  "hair-care": [
+    {
+      href: "/beauty/",
+      label: "Browse the beauty guide",
+      description: "Move between hair, makeup and fragrance coverage.",
+    },
+    {
+      href: "/skincare/",
+      label: "Explore skin and scalp context",
+      description: "Start with a practical care question.",
+    },
+    {
+      href: "/journal/",
+      label: "Read the method",
+      description: "See how BES3 weighs claims and choices.",
+    },
+  ],
+  fragrance: [
+    {
+      href: "/beauty/",
+      label: "Browse the beauty guide",
+      description: "Move between fragrance, makeup and hair coverage.",
+    },
+    {
+      href: "/makeup/",
+      label: "Explore makeup",
+      description: "Find another route through personal expression.",
+    },
+    {
+      href: "/journal/",
+      label: "Read the method",
+      description: "See how BES3 weighs claims and choices.",
+    },
+  ],
+  journal: [
+    {
+      href: "/beauty/",
+      label: "Browse the beauty guide",
+      description: "Find coverage across every beauty category.",
+    },
+    {
+      href: "/skincare/",
+      label: "Explore skincare",
+      description: "Move from the evidence to a practical question.",
+    },
+    {
+      href: "/how-we-evaluate/",
+      label: "See how we evaluate",
+      description: "Understand the editorial method behind the guides.",
+    },
+  ],
+  "brand-focus": [
+    {
+      href: "/product-guides/",
+      label: "Compare product categories",
+      description: "Keep brand information beside the wider shelf.",
+    },
+    {
+      href: "/ingredients/",
+      label: "Explore ingredients",
+      description: "Read the formula context before a claim.",
+    },
+    {
+      href: "/how-we-evaluate/",
+      label: "See how we evaluate",
+      description: "Understand the editorial method behind the guide.",
+    },
+  ],
+};
+
+const links = routes[collection];
+---
+
+<section class="article-topic-links" aria-labelledby="topic-links-heading">
+  <p class="eyebrow">EXPLORE THE CONTEXT</p>
+  <h2 id="topic-links-heading">Continue through the beauty archive.</h2>
+  <p>Take the next useful route rather than treating one article as the end of the question.</p>
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            data-analytics-link-type="article-topic-path"
+            data-analytics-label={link.label}
+          >
+            <strong>{link.label}</strong>
+            <span>{link.description}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

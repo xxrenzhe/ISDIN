@@ -19,6 +19,7 @@
     "test:e2e": "playwright test",
     "check:links": "node scripts/check-links.mjs",
     "check:affiliate-links": "node scripts/check-affiliate-links.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
     "check:editorial-content": "node scripts/check-editorial-content.mjs",
     "check:image-review": "node scripts/check-image-review.mjs",
     "check:content-readiness": "node scripts/check-content-readiness.mjs",
@@ -27,7 +28,7 @@
     "deploy:pages": "node scripts/deploy-pages.mjs",
     "deploy:production": "npm run check && npm run deploy:pages -- --branch main && npm run verify:production",
     "verify:production": "node scripts/verify-production.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run check:content-readiness && npm run check:image-review && npm run build && npm run check:links && npm run check:affiliate-links && npm run check:editorial-content && npm run check:public-content"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run check:content-readiness && npm run check:image-review && npm run build && npm run check:seo && npm run check:links && npm run check:affiliate-links && npm run check:editorial-content && npm run check:public-content"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",

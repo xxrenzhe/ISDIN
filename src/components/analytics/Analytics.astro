@@ -1,0 +1,45 @@
+---
+const rawGtmId = import.meta.env.PUBLIC_GTM_ID?.trim().toUpperCase();
+const rawGa4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID?.trim().toUpperCase();
+const gtmId = rawGtmId && /^GTM-[A-Z0-9]+$/.test(rawGtmId) ? rawGtmId : undefined;
+const ga4Id = rawGa4Id && /^G-[A-Z0-9]+$/.test(rawGa4Id) ? rawGa4Id : undefined;
+const analyticsConfigured = Boolean(gtmId || ga4Id);
+---
+
+{
+  analyticsConfigured && (
+    <>
+      <aside
+        class="analytics-consent"
+        data-analytics-consent
+        hidden
+        aria-label="Analytics choices"
+        aria-live="polite"
+      >
+        <p class="eyebrow">YOUR CHOICE</p>
+        <h2>Help us understand what is useful.</h2>
+        <p>
+          With your permission, BES3 uses Google Analytics to measure page use, navigation, searches
+          and link clicks. We do not send search terms, form entries or sensitive information.
+        </p>
+        <p>
+          <a href="/privacy/">Read the privacy notice</a>
+        </p>
+        <div class="analytics-consent__actions">
+          <button class="button button--secondary" type="button" data-analytics-choice="denied">
+            Keep analytics off
+          </button>
+          <button class="button button--primary" type="button" data-analytics-choice="granted">
+            Allow analytics
+          </button>
+        </div>
+      </aside>
+
+      <button class="analytics-preferences" type="button" data-analytics-preferences hidden>
+        Privacy settings
+      </button>
+      <div id="bes3-analytics-config" data-ga4-id={ga4Id} data-gtm-id={gtmId} hidden />
+      <script is:inline src="/analytics.js?v=20260722" />
+    </>
+  )
+}

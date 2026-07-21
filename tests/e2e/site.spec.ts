@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+const astroImageUrl = /^https:\/\/bes3\.com\/(?:_astro\/|@fs\/)/;
+
 test("home page has an accessible editorial entry point", async ({ page }) => {
   await page.goto("/");
 
@@ -17,6 +19,16 @@ test("home page has an accessible editorial entry point", async ({ page }) => {
     "href",
     "/beauty/",
   );
+
+  const schema = await page
+    .locator('script[type="application/ld+json"]')
+    .evaluate((element) => JSON.parse(element.textContent || "{}"));
+  expect(
+    schema["@graph"].some(
+      (item: { "@type": string; potentialAction?: { "@type": string; target: string } }) =>
+        item["@type"] === "WebSite" && item.potentialAction?.["@type"] === "SearchAction",
+    ),
+  ).toBe(true);
 
   const results = await new AxeBuilder({ page }).include("main").analyze();
   expect(results.violations).toEqual([]);
@@ -127,8 +139,10 @@ test("privacy page provides a current reader-facing notice", async ({ page }) =>
   await expect(page.locator("main")).toContainText(
     "Cloudflare's handling of information is described in its Privacy Policy.",
   );
+  await expect(page.locator("main")).toContainText("Optional analytics and measurement");
+  await expect(page.locator("main")).toContainText("We do not send search terms");
   await expect(page.locator("main")).toContainText("Read our affiliate disclosure for details.");
-  await expect(page.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Privacy Policy", exact: true })).toHaveAttribute(
     "href",
     "https://www.cloudflare.com/privacypolicy/",
   );
@@ -176,12 +190,20 @@ test("articles provide breadcrumb, related-reading and structured-data paths", a
   await expect(relatedReading).toBeVisible();
   await expect(page.locator(".related-reading a")).toHaveCount(3);
 
+  const topicLinks = page.getByRole("heading", { name: "Continue through the beauty archive." });
+  await expect(topicLinks).toBeVisible();
+  await expect(page.locator(".article-topic-links a")).toHaveCount(3);
+  await expect(page.locator(".sources a").first()).toHaveAttribute("target", "_blank");
+  await expect(page.locator(".sources a").first()).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", astroImageUrl);
+
   const schema = await page
     .locator('script[type="application/ld+json"]')
     .evaluate((element) => JSON.parse(element.textContent || "{}"));
-  expect(schema["@graph"].some((item: { "@type": string }) => item["@type"] === "Article")).toBe(
-    true,
-  );
+  const articleSchema = schema["@graph"].find(
+    (item: { "@type": string }) => item["@type"] === "Article",
+  ) as { image?: string[] };
+  expect(articleSchema.image?.[0]).toMatch(astroImageUrl);
   expect(
     schema["@graph"].some((item: { "@type": string }) => item["@type"] === "BreadcrumbList"),
   ).toBe(true);

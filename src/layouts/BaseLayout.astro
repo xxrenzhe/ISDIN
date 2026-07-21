@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/manrope";
 import "@fontsource-variable/newsreader";
+import Analytics from "@/components/analytics/Analytics.astro";
 import SiteFooter from "@/components/navigation/SiteFooter.astro";
 import SiteHeader from "@/components/navigation/SiteHeader.astro";
 import { SITE } from "@/data/site";
@@ -17,6 +18,7 @@ interface Props {
     publishedDate: Date;
     modifiedDate: Date;
     author: string;
+    image?: string;
   };
   breadcrumbs?: Array<{ label: string; href?: string }>;
 }
@@ -37,6 +39,10 @@ const isPreviewDeployment =
 const shouldNoindex = noindex || isPreviewDeployment;
 const organizationId = `${SITE.url}/#organization`;
 const websiteId = `${SITE.url}/#website`;
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+const socialImage = article?.image
+  ? new URL(article.image, SITE.url).toString()
+  : `${SITE.url}/og-default.svg`;
 const pageSchema = {
   "@type": type === "article" ? "Article" : pageType,
   "@id": canonical,
@@ -47,6 +53,7 @@ const pageSchema = {
   mainEntityOfPage: type === "article" ? { "@id": canonical } : undefined,
   datePublished: article?.publishedDate.toISOString(),
   dateModified: article?.modifiedDate.toISOString(),
+  image: article?.image ? [socialImage] : undefined,
   author: article
     ? {
         "@type": "Organization",
@@ -73,6 +80,11 @@ const schema = {
       name: SITE.name,
       url: SITE.url,
       inLanguage: "en-US",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE.url}/search/?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
     },
     pageSchema,
     ...(breadcrumbs.length > 0
@@ -103,13 +115,20 @@ const schema = {
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="BES3 editorial feed" href="/rss.xml" />
+    {
+      googleSiteVerification && (
+        <meta name="google-site-verification" content={googleSiteVerification} />
+      )
+    }
     {shouldNoindex && <meta name="robots" content="noindex,nofollow" />}
     <meta property="og:type" content={type} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={`${SITE.url}/og-default.svg`} />
+    <meta property="og:image" content={socialImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={title} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
@@ -118,5 +137,6 @@ const schema = {
       <slot />
     </main>
     <SiteFooter />
+    <Analytics />
   </body>
 </html>

@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 const effectiveDate = new Intl.DateTimeFormat("en-US", {
   dateStyle: "long",
   timeZone: "UTC",
-}).format(new Date("2026-07-21T00:00:00Z"));
+}).format(new Date("2026-07-22T00:00:00Z"));
 ---
 
 <BaseLayout
@@ -17,7 +17,7 @@ const effectiveDate = new Intl.DateTimeFormat("en-US", {
     </p>
   </section>
   <section class="section reading-width article-body">
-    <p><strong>Effective date: <time datetime="2026-07-21">{effectiveDate}</time></strong></p>
+    <p><strong>Effective date: <time datetime="2026-07-22">{effectiveDate}</time></strong></p>
     <h2>Information we collect</h2><p>
       BES3 does not offer user accounts, comments, a newsletter sign-up or a contact form. You can
       browse the site without directly providing us with your name, email address or payment
@@ -26,9 +26,20 @@ const effectiveDate = new Intl.DateTimeFormat("en-US", {
     <h2>Hosting and essential technical data</h2><p>
       BES3 is delivered through Cloudflare Pages. Like most web hosts, Cloudflare may process
       limited technical information, such as an IP address, browser details and request data, to
-      deliver and protect the site. BES3 does not add advertising, marketing or analytics cookies to
-      its pages. Cloudflare's handling of information is described in its{" "}
+      deliver and protect the site. Cloudflare's handling of information is described in its{" "}
       <a href="https://www.cloudflare.com/privacypolicy/">Privacy Policy</a>.
+    </p>
+    <h2>Optional analytics and measurement</h2><p>
+      When optional analytics are configured, BES3 asks before loading Google Tag Manager or Google
+      Analytics. If you allow analytics, we measure page use, navigation, site-search behavior and
+      clicks on editorial, source and commercial links. We do not send search terms, form entries or
+      sensitive information as analytics events. Google may process technical identifiers under its
+      own <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+    </p>
+    <p>
+      You can keep analytics off, or reopen the privacy settings control after making a choice. A
+      browser's Do Not Track preference is respected. Google Search Console is used only to review
+      site discovery and search performance; it does not add a reader tracking script.
     </p>
     <h2>Email you choose to send</h2><p>
       If you email the editorial desk, we receive the information included in your message and use

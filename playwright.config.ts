@@ -13,7 +13,9 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   webServer: {
-    command: "npm run dev -- --host 127.0.0.1",
+    // Astro detects coding agents and otherwise detaches its dev server, which makes
+    // Playwright treat the web-server command as having exited unexpectedly.
+    command: "ASTRO_DEV_BACKGROUND=0 npm run dev -- --host 127.0.0.1",
     url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
   },

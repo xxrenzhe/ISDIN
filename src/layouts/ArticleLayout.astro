@@ -6,8 +6,10 @@ import MerchantLink from "@/components/commercial/MerchantLink.astro";
 import ArticleDecisionGuide from "@/components/content/ArticleDecisionGuide.astro";
 import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
 import RelatedReading from "@/components/content/RelatedReading.astro";
+import ArticleTopicLinks from "@/components/content/ArticleTopicLinks.astro";
 import Breadcrumbs from "@/components/navigation/Breadcrumbs.astro";
 import { getIsdinLink } from "@/data/affiliate-links/isdin";
+import { getArtwork } from "@/data/article-artwork";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { contentHref, formatDate } from "@/utils/content";
 
@@ -92,6 +94,7 @@ const relatedEntries = allEntries
     eyebrow: related.data.eyebrow || collectionMeta[related.collection].label,
   }));
 const usesFictionalProductProps = collection === "brand-focus" && entry.id.startsWith("isdin/");
+const articleImage = getArtwork(`${entry.collection}/${entry.id}`).src;
 
 if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
   throw new Error(`Affiliate article requires an approved affiliate link: ${entry.id}`);
@@ -102,7 +105,12 @@ if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
   title={data.title}
   description={data.description}
   type="article"
-  article={{ publishedDate: data.publishDate, modifiedDate: updated, author: "BES3 Editorial" }}
+  article={{
+    publishedDate: data.publishDate,
+    modifiedDate: updated,
+    author: "BES3 Editorial",
+    image: articleImage,
+  }}
   {breadcrumbs}
 >
   <article>
@@ -157,6 +165,8 @@ if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
           productTypes={data.productTypes}
         />
 
+        <ArticleTopicLinks collection={entry.collection as Exclude<CollectionKey, "authors">} />
+
         {
           ctaLinkId &&
             (data.disclosure === "affiliate" ? (
@@ -174,7 +184,9 @@ if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
             {
               data.sources.map((source) => (
                 <li>
-                  <a href={source.url}>{source.label}</a>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer">
+                    {source.label}
+                  </a>
                 </li>
               ))
             }

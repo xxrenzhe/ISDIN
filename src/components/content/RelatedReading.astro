@@ -22,7 +22,11 @@ const { items } = Astro.props;
       <ol>
         {items.map((item, index) => (
           <li>
-            <a href={item.href}>
+            <a
+              href={item.href}
+              data-analytics-link-type="related-reading"
+              data-analytics-label={item.title}
+            >
               <span aria-hidden="true">0{index + 1}</span>
               <span>
                 <small>{item.eyebrow}</small>

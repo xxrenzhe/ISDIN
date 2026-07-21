@@ -28,14 +28,23 @@ const {
 <article class:list={["article-card", `article-card--${variant}`]}>
   {
     variant !== "compact" && (
-      <a href={href} tabindex="-1" aria-hidden="true">
+      <a
+        href={href}
+        tabindex="-1"
+        aria-hidden="true"
+        data-analytics-link-type="article-card"
+        data-analytics-label={title}
+      >
         <EditorialArtwork artworkKey={artworkKey} compact label={`${title} editorial photo`} />
       </a>
     )
   }
   <div class="article-card__body">
     <p class="eyebrow">{eyebrow}</p>
-    <h3><a href={href}>{title}</a></h3>
+    <h3>
+      <a href={href} data-analytics-link-type="article-card" data-analytics-label={title}>{title}</a
+      >
+    </h3>
     {variant !== "compact" && <p>{description}</p>}
     <p class="card-meta">
       <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time><span
