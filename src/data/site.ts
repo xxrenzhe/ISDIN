@@ -3,16 +3,17 @@ export const SITE = {
   displayName: "BES³",
   url: "https://bes3.com",
   description:
-    "Independent guides to skincare ingredients, routines, product categories and better-informed choices.",
+    "Independent beauty guides to skincare, makeup, hair care, fragrance and better-informed choices.",
   email: "editorial@bes3.com",
   locale: "en_US",
 };
 
 export const PRIMARY_NAV = [
-  { label: "Concerns", href: "/concerns/" },
-  { label: "Ingredients", href: "/ingredients/" },
-  { label: "Routines", href: "/routines/" },
-  { label: "Product guides", href: "/product-guides/" },
+  { label: "Beauty", href: "/beauty/" },
+  { label: "Skincare", href: "/skincare/" },
+  { label: "Makeup", href: "/makeup/" },
+  { label: "Hair care", href: "/hair-care/" },
+  { label: "Fragrance", href: "/fragrance/" },
   { label: "Brand focus", href: "/brand-focus/" },
   { label: "Journal", href: "/journal/" },
 ];

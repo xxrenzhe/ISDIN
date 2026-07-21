@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+import ArticleCard from "@/components/content/ArticleCard.astro";
+import PageHero from "@/components/content/PageHero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { byNewest, contentArtworkKey, contentHref } from "@/utils/content";
+
+const [concerns, ingredients, routines, productGuides] = await Promise.all([
+  getCollection("concerns", ({ data }) => !data.draft),
+  getCollection("ingredients", ({ data }) => !data.draft),
+  getCollection("routines", ({ data }) => !data.draft),
+  getCollection("product-guides", ({ data }) => !data.draft),
+]);
+
+const latest = byNewest([...concerns, ...ingredients, ...routines, ...productGuides]).slice(0, 4);
+const pathways = [
+  {
+    href: "/concerns/",
+    label: "Skin concerns",
+    description: "Start with what you are seeing or feeling.",
+  },
+  {
+    href: "/ingredients/",
+    label: "Ingredients",
+    description: "Learn what familiar formula components may do.",
+  },
+  {
+    href: "/routines/",
+    label: "Routines",
+    description: "Build a sequence that is easier to repeat.",
+  },
+  {
+    href: "/product-guides/",
+    label: "Product guides",
+    description: "Compare category choices before adding another bottle.",
+  },
+];
+---
+
+<BaseLayout
+  title="Skincare guide"
+  description="Explore BES3 skincare coverage across concerns, ingredients, routines and product guides."
+  pageType="CollectionPage"
+>
+  <PageHero
+    eyebrow="THE SKINCARE DESK"
+    title="Skincare, made clearer."
+    description="The complete BES3 skincare archive, organized around the questions that make a routine easier to live with."
+  />
+
+  <section class="section section--paper">
+    <div class="shell">
+      <div class="section-heading">
+        <div><h2>Find the right starting point.</h2></div>
+        <p>
+          Choose the path that matches your question; every route keeps sources, limitations and
+          routine fit in view.
+        </p>
+      </div>
+      <div class="beauty-topic-grid">
+        {
+          pathways.map((pathway, index) => (
+            <a href={pathway.href}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{pathway.label}</strong>
+              <p>{pathway.description}</p>
+              <span aria-hidden="true">→</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading">
+      <div><h2>Recent skincare coverage.</h2></div>
+      <p>Concerns, formulas and routines selected for a calmer, more useful everyday archive.</p>
+    </div>
+    <div class="card-grid">
+      {
+        latest.map((entry) => (
+          <ArticleCard
+            href={contentHref(entry)}
+            title={entry.data.title}
+            description={entry.data.description}
+            eyebrow={entry.data.eyebrow}
+            publishDate={entry.data.publishDate}
+            readTime={entry.data.readTime}
+            artworkKey={contentArtworkKey(entry)}
+          />
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

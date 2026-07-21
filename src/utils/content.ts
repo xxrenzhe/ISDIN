@@ -5,6 +5,9 @@ const ROUTES: Record<string, string> = {
   ingredients: "/ingredients/",
   routines: "/routines/",
   "product-guides": "/product-guides/",
+  makeup: "/makeup/",
+  "hair-care": "/hair-care/",
+  fragrance: "/fragrance/",
   journal: "/journal/",
   "brand-focus": "/brand-focus/",
 };

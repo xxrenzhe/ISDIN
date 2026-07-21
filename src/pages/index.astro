@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
-import heroImage from "@/assets/images/bes3-home-routine-v3.webp";
+import heroImage from "@/assets/images/bes3-home-beauty.webp";
 import ArticleCard from "@/components/content/ArticleCard.astro";
 import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -12,6 +12,9 @@ const allEditorial = await Promise.all([
   getCollection("ingredients", ({ data }) => !data.draft),
   getCollection("routines", ({ data }) => !data.draft),
   getCollection("product-guides", ({ data }) => !data.draft),
+  getCollection("makeup", ({ data }) => !data.draft),
+  getCollection("hair-care", ({ data }) => !data.draft),
+  getCollection("fragrance", ({ data }) => !data.draft),
 ]);
 const articles = byNewest(allEditorial.flat());
 const feature = articles.find((entry) => entry.data.featured) || articles[0];
@@ -22,19 +25,19 @@ const brandFocus = await getCollection("brand-focus", ({ data }) => !data.draft)
 
 <BaseLayout
   title="BES3"
-  description="Skincare, examined more clearly. Independent guides to ingredients, routines and product choices."
+  description="Beauty, examined more clearly. Independent guides to skincare, makeup, hair care and fragrance."
 >
   <section class="hero shell">
     <div class="hero__copy">
-      <p class="eyebrow">INDEPENDENT SKINCARE EDITORIAL</p>
-      <h1>Skincare, examined more clearly.</h1>
+      <p class="eyebrow">INDEPENDENT BEAUTY EDITORIAL</p>
+      <h1>Beauty, examined more clearly.</h1>
       <p class="lede">
-        Independent guides to ingredients, routines and the product choices behind healthier-looking
-        skin.
+        Independent guides to skincare, makeup, hair care and fragrance—so every choice can start
+        with more context and less noise.
       </p>
       <div class="hero__actions">
-        <a class="button button--primary" href="/ingredients/">Explore the essentials</a>
-        <a class="text-link" href="/how-we-evaluate/">How we evaluate skincare</a>
+        <a class="button button--primary" href="/beauty/">Explore beauty coverage</a>
+        <a class="text-link" href="/how-we-evaluate/">How we evaluate beauty</a>
       </div>
     </div>
     <figure class="hero__visual">
@@ -43,7 +46,7 @@ const brandFocus = await getCollection("brand-focus", ({ data }) => !data.draft)
         widths={[480, 720, 960, 1280]}
         formats={["avif", "webp"]}
         sizes="(max-width: 839px) calc(100vw - 40px), 40vw"
-        alt="Person applying sunscreen to their cheek in soft morning window light"
+        alt="Person considering makeup, fragrance and hair care at a sunlit vanity"
         loading="eager"
         fetchpriority="high"
       />
@@ -53,10 +56,10 @@ const brandFocus = await getCollection("brand-focus", ({ data }) => !data.draft)
   <section class="section section--paper">
     <div class="shell">
       <div class="section-heading">
-        <div><h2>Start with what matters.</h2></div>
+        <div><h2>Start with the question that matters.</h2></div>
         <p>
-          Clearer explanations for the questions that shape an effective routine—without adding more
-          noise.
+          The latest independent coverage across skincare, makeup, hair care and fragrance—without
+          adding more noise.
         </p>
       </div>
       {
@@ -93,7 +96,36 @@ const brandFocus = await getCollection("brand-focus", ({ data }) => !data.draft)
 
   <section class="section shell">
     <div class="section-heading">
-      <div><h2>Explore by need, not hype.</h2></div>
+      <div><h2>Beauty has more than one starting point.</h2></div>
+      <p>Choose a category, then move from a broad question to a more useful next step.</p>
+    </div>
+    <div class="beauty-topic-grid">
+      <a href="/skincare/"
+        ><span>01</span><strong>Skincare</strong><p>Concerns, formulas and routines.</p><span
+          aria-hidden="true">→</span
+        ></a
+      >
+      <a href="/makeup/"
+        ><span>02</span><strong>Makeup</strong><p>Complexion, color and technique.</p><span
+          aria-hidden="true">→</span
+        ></a
+      >
+      <a href="/hair-care/"
+        ><span>03</span><strong>Hair care</strong><p>Scalp, lengths and styling habits.</p><span
+          aria-hidden="true">→</span
+        ></a
+      >
+      <a href="/fragrance/"
+        ><span>04</span><strong>Fragrance</strong><p>Scent, concentration and comfort.</p><span
+          aria-hidden="true">→</span
+        ></a
+      >
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading">
+      <div><h2>Skincare by need, not hype.</h2></div>
       <p>Find practical starting points, relevant ingredients and routines that stay manageable.</p>
     </div>
     <div class="indexed-list">

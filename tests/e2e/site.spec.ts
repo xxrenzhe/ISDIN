@@ -6,31 +6,63 @@ test("home page has an accessible editorial entry point", async ({ page }) => {
 
   await expect(page).toHaveTitle("BES3");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Skincare, examined more clearly.",
+    "Beauty, examined more clearly.",
   );
   await expect(
     page.getByRole("img", {
-      name: "Person applying sunscreen to their cheek in soft morning window light",
+      name: "Person considering makeup, fragrance and hair care at a sunlit vanity",
     }),
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: "Explore the essentials" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Explore beauty coverage" })).toHaveAttribute(
     "href",
-    "/ingredients/",
+    "/beauty/",
   );
 
   const results = await new AxeBuilder({ page }).include("main").analyze();
   expect(results.violations).toEqual([]);
 });
 
-test("mobile navigation reaches the concerns index", async ({ page }) => {
+test("mobile navigation reaches the skincare hub", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 900 });
   await page.goto("/");
 
   await page.getByLabel("Open site menu").click();
-  await page.getByRole("link", { name: "01 Concerns" }).click();
+  await page.getByRole("link", { name: "02 Skincare" }).click();
 
-  await expect(page).toHaveURL(/\/concerns\/$/);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Skin concerns");
+  await expect(page).toHaveURL(/\/skincare\/$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Skincare, made clearer.");
+});
+
+test("beauty hubs provide a clear route to makeup, hair care and fragrance coverage", async ({
+  page,
+}) => {
+  await page.goto("/beauty/");
+
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Beauty, with room for context.",
+  );
+  await expect(page.getByRole("link", { name: /Explore Makeup$/ })).toHaveAttribute(
+    "href",
+    "/makeup/",
+  );
+  await expect(page.getByRole("link", { name: /Explore Hair care$/ })).toHaveAttribute(
+    "href",
+    "/hair-care/",
+  );
+  await expect(page.getByRole("link", { name: /Explore Fragrance$/ })).toHaveAttribute(
+    "href",
+    "/fragrance/",
+  );
+
+  await page.goto("/makeup/complexion-makeup-guide/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Complexion Makeup: A Practical Place to Start",
+  );
+  await expect(
+    page.getByRole("img", {
+      name: "Complexion Makeup: A Practical Place to Start editorial photo",
+    }),
+  ).toBeVisible();
 });
 
 test("mobile menu locks the page and closes with Escape", async ({ page }) => {

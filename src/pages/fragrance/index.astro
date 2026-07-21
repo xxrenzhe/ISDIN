@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import CollectionIndex from "@/components/content/CollectionIndex.astro";
+import { byNewest, contentArtworkKey, contentHref } from "@/utils/content";
+
+const entries = byNewest(await getCollection("fragrance", ({ data }) => !data.draft));
+const items = entries.map((entry) => ({
+  href: contentHref(entry),
+  ...entry.data,
+  eyebrow: "FRAGRANCE NOTES",
+  artworkKey: contentArtworkKey(entry),
+}));
+---
+
+<CollectionIndex
+  title="Fragrance, with more context."
+  eyebrow="SCENT, CONCENTRATION AND USE"
+  description="Make sense of fragrance labels, scent development and the quiet choices that make a bottle feel like yours."
+  layout="index"
+  {items}
+/>

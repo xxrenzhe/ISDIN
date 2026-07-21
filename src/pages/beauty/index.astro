@@ -1,0 +1,118 @@
+---
+import { getCollection } from "astro:content";
+import ArticleCard from "@/components/content/ArticleCard.astro";
+import EditorialArtwork from "@/components/content/EditorialArtwork.astro";
+import PageHero from "@/components/content/PageHero.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { byNewest, contentArtworkKey, contentHref } from "@/utils/content";
+
+const [makeup, hairCare, fragrance] = await Promise.all([
+  getCollection("makeup", ({ data }) => !data.draft),
+  getCollection("hair-care", ({ data }) => !data.draft),
+  getCollection("fragrance", ({ data }) => !data.draft),
+]);
+
+const latest = byNewest([...makeup, ...hairCare, ...fragrance]).slice(0, 3);
+const categories = [
+  {
+    number: "01",
+    label: "Skincare",
+    href: "/skincare/",
+    description: "Ingredients, concerns, routines and product guidance for everyday skin care.",
+    artworkKey: "ingredients/niacinamide",
+  },
+  {
+    number: "02",
+    label: "Makeup",
+    href: "/makeup/",
+    description: "Complexion, color and techniques that keep the result looking like you.",
+    artworkKey: "makeup/complexion-makeup-guide",
+  },
+  {
+    number: "03",
+    label: "Hair care",
+    href: "/hair-care/",
+    description: "Scalp comfort, wash day and styling choices with a lighter touch.",
+    artworkKey: "hair-care/scalp-care-routine",
+  },
+  {
+    number: "04",
+    label: "Fragrance",
+    href: "/fragrance/",
+    description: "Scent families, concentration and ways to wear fragrance thoughtfully.",
+    artworkKey: "fragrance/fragrance-concentrations",
+  },
+];
+---
+
+<BaseLayout
+  title="Beauty guide"
+  description="Browse BES3 coverage across skincare, makeup, hair care and fragrance."
+  pageType="CollectionPage"
+>
+  <PageHero
+    eyebrow="THE BES3 BEAUTY GUIDE"
+    title="Beauty, with room for context."
+    description="Start with the category that matters today, then find a clear route through the products and claims around it."
+  />
+
+  <section class="section section--paper">
+    <div class="shell">
+      <div class="section-heading">
+        <div><h2>Choose a room, not a trend.</h2></div>
+        <p>
+          Each desk has its own questions. The method stays the same: clearer context before more
+          product.
+        </p>
+      </div>
+      <div class="beauty-category-grid">
+        {
+          categories.map((category) => (
+            <a class="beauty-category-card" href={category.href}>
+              <EditorialArtwork
+                artworkKey={category.artworkKey}
+                compact
+                label={`${category.label} editorial coverage`}
+              />
+              <div>
+                <p class="eyebrow">
+                  {category.number} · {category.label}
+                </p>
+                <h2>{category.label}</h2>
+                <p>{category.description}</p>
+                <span>
+                  Explore {category.label}
+                  <span aria-hidden="true"> →</span>
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading">
+      <div><h2>New at the beauty desk.</h2></div>
+      <p>
+        Recent guides across makeup, hair care and fragrance, all in the same clear editorial frame.
+      </p>
+    </div>
+    <div class="card-grid">
+      {
+        latest.map((entry) => (
+          <ArticleCard
+            href={contentHref(entry)}
+            title={entry.data.title}
+            description={entry.data.description}
+            eyebrow={entry.data.eyebrow}
+            publishDate={entry.data.publishDate}
+            readTime={entry.data.readTime}
+            artworkKey={contentArtworkKey(entry)}
+          />
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

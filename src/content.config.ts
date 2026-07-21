@@ -78,6 +78,9 @@ export const collections = {
   ingredients: collection("./src/content/ingredients"),
   routines: collection("./src/content/routines"),
   "product-guides": collection("./src/content/product-guides"),
+  makeup: collection("./src/content/makeup"),
+  "hair-care": collection("./src/content/hair-care"),
+  fragrance: collection("./src/content/fragrance"),
   journal: collection("./src/content/journal"),
   "brand-focus": collection("./src/content/brand-focus"),
 };

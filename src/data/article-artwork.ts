@@ -4,12 +4,18 @@ import brandGuide from "@/assets/images/bes3-cover-isdin-brand-guide.webp";
 import claimMethod from "@/assets/images/bes3-cover-journal-claim-method.webp";
 import dailyFacialSunscreen from "@/assets/images/bes3-cover-guide-daily-facial-sunscreen.webp";
 import dailySun from "@/assets/images/bes3-cover-routine-daily-sun.webp";
+import fragranceConcentrations from "@/assets/images/bes3-cover-fragrance-concentrations.webp";
+import fragranceLayering from "@/assets/images/bes3-cover-fragrance-layering.webp";
 import fusionWater from "@/assets/images/bes3-cover-isdin-fusion-water.webp";
+import hairHeatStyling from "@/assets/images/bes3-cover-hair-heat-styling.webp";
+import hairScalpCare from "@/assets/images/bes3-cover-hair-scalp-care.webp";
 import homeBrandFocus from "@/assets/images/bes3-cover-home-brand-focus.webp";
 import hyaluronicAcid from "@/assets/images/bes3-cover-ingredient-hyaluronic-acid.webp";
 import isdinHub from "@/assets/images/bes3-cover-isdin-hub.webp";
 import melaclear from "@/assets/images/bes3-cover-isdin-melaclear.webp";
 import melatonik from "@/assets/images/bes3-cover-isdin-melatonik.webp";
+import makeupComplexion from "@/assets/images/bes3-cover-makeup-complexion.webp";
+import makeupConcealer from "@/assets/images/bes3-cover-makeup-concealer.webp";
 import topicalMelatonin from "@/assets/images/bes3-cover-ingredient-melatonin.webp";
 import mineralOrganic from "@/assets/images/bes3-cover-guide-mineral-organic.webp";
 import minimalSensitive from "@/assets/images/bes3-cover-routine-minimal-sensitive.webp";
@@ -35,6 +41,10 @@ export const articleArtwork: Record<string, ImageMetadata> = {
   "brand-focus/isdin/melaclear-dark-spot-routine": melaclear,
   "brand-focus/isdin/melatonik-guide": melatonik,
   "brand-focus/isdin/retinal-advanced-guide": retinalAdvanced,
+  "fragrance/fragrance-concentrations": fragranceConcentrations,
+  "fragrance/how-to-layer-fragrance": fragranceLayering,
+  "hair-care/heat-styling-guide": hairHeatStyling,
+  "hair-care/scalp-care-routine": hairScalpCare,
   "concerns/how-much-sunscreen": sunscreenAmount,
   "concerns/photoaging": photoaging,
   "concerns/uneven-tone": unevenTone,
@@ -48,6 +58,8 @@ export const articleArtwork: Record<string, ImageMetadata> = {
   "ingredients/tranexamic-acid": tranexamicAcid,
   "ingredients/vitamin-c": vitaminC,
   "journal/how-bes3-reads-a-skincare-claim": claimMethod,
+  "makeup/complexion-makeup-guide": makeupComplexion,
+  "makeup/choose-a-concealer": makeupConcealer,
   "product-guides/choose-daily-facial-sunscreen": dailyFacialSunscreen,
   "product-guides/mineral-vs-organic-sunscreen": mineralOrganic,
   "routines/daily-sun-protection": dailySun,
