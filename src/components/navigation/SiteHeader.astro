@@ -10,12 +10,18 @@ const isActive = (href: string) =>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
   <div class="site-header__inner shell">
-    <a class="site-logo" href="/" aria-label="BES3 home"><Logo /></a>
+    <a class="site-logo" href="/" aria-label="BES3 home" data-analytics-link-type="site-logo">
+      <Logo />
+    </a>
 
     <nav class="desktop-nav" aria-label="Primary navigation">
       {
         PRIMARY_NAV.map((item) => (
-          <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            data-analytics-link-type="primary-navigation"
+          >
             {item.label}
           </a>
         ))
@@ -23,7 +29,12 @@ const isActive = (href: string) =>
     </nav>
 
     <div class="header-actions">
-      <a class="icon-link" href="/search/" aria-label="Search BES3">
+      <a
+        class="icon-link"
+        href="/search/"
+        aria-label="Search BES3"
+        data-analytics-link-type="header-search"
+      >
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="11" cy="11" r="6.5"></circle>
           <path d="m16 16 4 4"></path>
@@ -37,13 +48,19 @@ const isActive = (href: string) =>
         <nav aria-label="Mobile navigation">
           {
             PRIMARY_NAV.map((item, index) => (
-              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                data-analytics-link-type="mobile-navigation"
+              >
                 <span>0{index + 1}</span>
                 {item.label}
               </a>
             ))
           }
-          <a href="/about/"><span>07</span>About BES3</a>
+          <a href="/about/" data-analytics-link-type="mobile-navigation">
+            <span>07</span>About BES3
+          </a>
         </nav>
       </details>
     </div>

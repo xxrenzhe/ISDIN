@@ -19,6 +19,10 @@ test("home page has an accessible editorial entry point", async ({ page }) => {
     "href",
     "/beauty/",
   );
+  await expect(page.locator('.desktop-nav a[href="/beauty/"]')).toHaveAttribute(
+    "data-analytics-link-type",
+    "primary-navigation",
+  );
 
   const schema = await page
     .locator('script[type="application/ld+json"]')
@@ -188,6 +192,10 @@ test("articles provide breadcrumb, related-reading and structured-data paths", a
     "href",
     "/ingredients/",
   );
+  await expect(breadcrumb.getByRole("link", { name: "Ingredients" })).toHaveAttribute(
+    "data-analytics-link-type",
+    "breadcrumb",
+  );
   await expect(breadcrumb.getByText("Can Melatonin Work in Topical Skin Care?")).toBeVisible();
 
   const relatedReading = page.getByRole("heading", {
@@ -227,4 +235,14 @@ test("the 404 page remains noindex and offers three useful exits", async ({ page
   await expect(main.getByRole("link", { name: "Browse ingredients" })).toBeVisible();
   await expect(main.getByRole("link", { name: "Browse routines" })).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex,nofollow");
+});
+
+test("search stays available to readers without being indexed", async ({ page }) => {
+  await page.goto("/search/?q=retinal");
+
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex,follow");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://bes3.com/search/",
+  );
 });

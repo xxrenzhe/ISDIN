@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 const dist = resolve("dist");
 const requiredPages = [
   "index.html",
+  "search/index.html",
   "beauty/index.html",
   "ingredients/melatonin-topical-skincare/index.html",
 ];
@@ -34,6 +35,18 @@ if (!home.includes('"@type":"WebSite"') || !home.includes('"@type":"SearchAction
   violations.push("index.html: missing WebSite SearchAction structured data");
 }
 
+const search = documents.find(({ file }) => file === "search/index.html")?.html || "";
+if (!search.includes('<meta name="robots" content="noindex,follow">')) {
+  violations.push("search/index.html: must be noindex,follow");
+}
+
+const sitemapPath = resolve(dist, "sitemap-0.xml");
+if (!existsSync(sitemapPath)) {
+  violations.push("sitemap-0.xml: missing generated sitemap");
+} else if (readFileSync(sitemapPath, "utf8").includes("https://bes3.com/search/")) {
+  violations.push("sitemap-0.xml: search page must not be listed");
+}
+
 const article =
   documents.find(({ file }) => file.includes("melatonin-topical-skincare"))?.html || "";
 if (!/<meta property="og:image" content="https:\/\/bes3\.com\/_astro\//.test(article)) {
@@ -56,6 +69,9 @@ if (!articleImages.some((image) => /^https:\/\/bes3\.com\/_astro\//.test(image))
 if (!article.includes('data-analytics-link-type="article-topic-path"')) {
   violations.push("article: missing contextual internal links");
 }
+if (!article.includes('data-analytics-link-type="source-reference"')) {
+  violations.push("article: missing source-reference link classification");
+}
 
 if (googleVerification) {
   const expected = `<meta name="google-site-verification" content="${googleVerification}"`;
@@ -68,5 +84,5 @@ if (violations.length > 0) {
 }
 
 process.stdout.write(
-  `Validated canonical metadata, structured data, social images and internal links in ${documents.length} SEO targets.\n`,
+  `Validated canonical metadata, index controls, structured data, social images and internal links in ${documents.length} SEO targets.\n`,
 );

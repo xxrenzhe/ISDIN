@@ -3,10 +3,10 @@
 ## What is built in
 
 - A Google Search Console HTML verification tag is emitted only when `PUBLIC_GOOGLE_SITE_VERIFICATION` is configured.
-- The generated sitemap remains available at `/sitemap-index.xml`; `robots.txt` already declares it.
-- Every article now has an article-specific social image, an `Article` image in JSON-LD, related editorial reading and three contextual internal links.
+- The generated sitemap remains available at `/sitemap-index.xml`; `robots.txt` already declares it. Reader search remains available at `/search/`, but is `noindex,follow` and excluded from the sitemap so query URLs never compete with editorial pages.
+- Every article now has an article-specific social image, an `Article` image in JSON-LD, related editorial reading, three contextual internal links and clearly classified source links.
 - Google Tag Manager is the preferred analytics delivery path. Direct GA4 loading is a fallback only when no GTM container is configured, preventing duplicate page views.
-- Google scripts load only after an explicit reader choice. The tracker respects Do Not Track, does not capture search text and provides a persistent privacy-settings control after a choice.
+- Google scripts load only after an explicit reader choice. The tracker respects Do Not Track, does not capture search text and provides a persistent privacy-settings control after a choice. It also records consented reading-depth milestones without collecting identifiers beyond those used by Google Analytics.
 
 ## Configure production
 
@@ -39,9 +39,11 @@ The deploy workflow passes these variables into the static build. Local developm
    - `bes3_merchant_link_click`
    - `bes3_search`
    - `bes3_search_result_click`
+   - `bes3_scroll_depth`
 
-3. Pass the provided event parameters where useful: `link_type`, `link_label`, `link_destination`, `page_path`, `brand`, `article`, `placement` and `query_length`.
-4. Use GTM Preview and GA4 DebugView with a consenting test browser to confirm events. Search terms are deliberately never sent—only query length and the search surface are measured.
+3. Pass the provided event parameters where useful: `link_type`, `link_label`, `link_destination`, `page_path`, `brand`, `article`, `placement`, `query_length` and `percent_scrolled`.
+4. Use navigation classifications (`site-logo`, `primary-navigation`, `mobile-navigation`, `footer-*`, `breadcrumb`), content classifications (`article-card`, `article-topic-path`, `source-reference`) and commercial classifications (`merchant` and `affiliate`) to build useful GTM reports without sending page content or personal data.
+5. Use GTM Preview and GA4 DebugView with a consenting test browser to confirm events. Search terms are deliberately never sent—only query length and the search surface are measured. Scroll depth fires once at each 25%, 50%, 75% and 100% milestone.
 
 ## Ongoing checks
 

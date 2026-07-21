@@ -184,7 +184,12 @@ if (data.disclosure === "affiliate" && ctaLink?.relationship !== "affiliate") {
             {
               data.sources.map((source) => (
                 <li>
-                  <a href={source.url} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-analytics-link-type="source-reference"
+                  >
                     {source.label}
                   </a>
                 </li>

@@ -6,7 +6,7 @@ import { LEGAL_LINKS, PRIMARY_NAV, SITE, TRUST_LINKS } from "@/data/site";
 <footer class="site-footer">
   <div class="shell footer-mast">
     <div class="footer-intro">
-      <a href="/" aria-label="BES3 home"><Logo /></a>
+      <a href="/" aria-label="BES3 home" data-analytics-link-type="footer-home"><Logo /></a>
       <p class="footer-signoff">Better evidence. Better choices. Better beauty.</p>
     </div>
     <p class="footer-note">
@@ -18,19 +18,43 @@ import { LEGAL_LINKS, PRIMARY_NAV, SITE, TRUST_LINKS } from "@/data/site";
   <div class="shell footer-index">
     <nav aria-label="Explore BES3">
       <p class="footer-label">Explore</p>
-      <div>{PRIMARY_NAV.map((item) => <a href={item.href}>{item.label}</a>)}</div>
+      <div>
+        {
+          PRIMARY_NAV.map((item) => (
+            <a href={item.href} data-analytics-link-type="footer-primary-navigation">
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
     </nav>
     <nav aria-label="BES3 standards">
       <p class="footer-label">Our standard</p>
-      <div>{TRUST_LINKS.map((item) => <a href={item.href}>{item.label}</a>)}</div>
+      <div>
+        {
+          TRUST_LINKS.map((item) => (
+            <a href={item.href} data-analytics-link-type="footer-trust-link">
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
     </nav>
     <nav aria-label="Legal and contact">
       <p class="footer-label">Information</p>
-      <div>{LEGAL_LINKS.map((item) => <a href={item.href}>{item.label}</a>)}</div>
+      <div>
+        {
+          LEGAL_LINKS.map((item) => (
+            <a href={item.href} data-analytics-link-type="footer-legal-link">
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
     </nav>
   </div>
   <div class="shell footer-bottom">
     <p>© {new Date().getFullYear()} BES3</p>
-    <a href="/rss.xml">RSS</a>
+    <a href="/rss.xml" data-analytics-link-type="footer-rss">RSS</a>
   </div>
 </footer>

@@ -8,7 +8,11 @@ if (analyticsConfig) {
   const preferencesButton = document.querySelector("[data-analytics-preferences]");
   const prefersDoNotTrack = navigator.doNotTrack === "1";
   let analyticsInitialized = false;
+  let engagementTrackingInitialized = false;
   let searchTimer;
+  let currentConsent;
+  const reachedScrollMilestones = new Set();
+  const scrollMilestones = [25, 50, 75, 100];
 
   const getDataLayer = () => {
     window.dataLayer = window.dataLayer || [];
@@ -24,7 +28,10 @@ if (analyticsConfig) {
     }
   };
 
+  currentConsent = getStoredConsent();
+
   const storeConsent = (value) => {
+    currentConsent = value;
     try {
       window.localStorage.setItem(storageKey, value);
     } catch {
@@ -48,6 +55,7 @@ if (analyticsConfig) {
 
     analyticsInitialized = true;
     gtag("consent", "update", { analytics_storage: "granted" });
+    setupEngagementTracking();
 
     if (gtmId) {
       getDataLayer().push({ "gtm.start": Date.now(), event: "gtm.js" });
@@ -74,8 +82,36 @@ if (analyticsConfig) {
   };
 
   const track = (eventName, parameters = {}) => {
-    if (getStoredConsent() !== "granted" || !analyticsInitialized) return;
+    if (currentConsent !== "granted" || !analyticsInitialized) return;
     gtag("event", eventName, parameters);
+  };
+
+  const trackScrollDepth = () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollableHeight <= 0) return;
+
+    const scrollPercentage = Math.min(
+      100,
+      Math.round(
+        ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100,
+      ),
+    );
+    for (const milestone of scrollMilestones) {
+      if (scrollPercentage >= milestone && !reachedScrollMilestones.has(milestone)) {
+        reachedScrollMilestones.add(milestone);
+        track("bes3_scroll_depth", {
+          page_path: window.location.pathname,
+          percent_scrolled: milestone,
+        });
+      }
+    }
+  };
+
+  const setupEngagementTracking = () => {
+    if (engagementTrackingInitialized) return;
+    engagementTrackingInitialized = true;
+    document.addEventListener("scroll", trackScrollDepth, { passive: true });
+    trackScrollDepth();
   };
 
   const readableLabel = (element) =>
@@ -120,11 +156,10 @@ if (analyticsConfig) {
 
   preferencesButton?.addEventListener("click", showChoices);
 
-  const storedConsent = getStoredConsent();
-  if (storedConsent === "granted" && !prefersDoNotTrack) {
+  if (currentConsent === "granted" && !prefersDoNotTrack) {
     initializeAnalytics();
     closeChoices();
-  } else if (storedConsent === "denied" || prefersDoNotTrack) {
+  } else if (currentConsent === "denied" || prefersDoNotTrack) {
     closeChoices();
   } else {
     showChoices();

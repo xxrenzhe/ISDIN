@@ -22,7 +22,9 @@ const { items } = Astro.props;
             </span>
           )}
           {item.href && index < items.length - 1 ? (
-            <a href={item.href}>{item.label}</a>
+            <a href={item.href} data-analytics-link-type="breadcrumb">
+              {item.label}
+            </a>
           ) : (
             <span aria-current="page">{item.label}</span>
           )}

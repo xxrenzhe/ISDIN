@@ -12,6 +12,7 @@ interface Props {
   description?: string;
   canonical?: string;
   noindex?: boolean;
+  robots?: "noindex,follow" | "noindex,nofollow";
   type?: "website" | "article";
   pageType?: "WebPage" | "CollectionPage";
   article?: {
@@ -28,6 +29,7 @@ const {
   description = SITE.description,
   canonical = new URL(Astro.url.pathname, SITE.url).toString(),
   noindex = false,
+  robots,
   type = "website",
   pageType = "WebPage",
   article,
@@ -36,7 +38,9 @@ const {
 const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
 const isPreviewDeployment =
   Boolean(import.meta.env.CF_PAGES_BRANCH) && import.meta.env.CF_PAGES_BRANCH !== "main";
-const shouldNoindex = noindex || isPreviewDeployment;
+const robotsDirective = isPreviewDeployment
+  ? "noindex,nofollow"
+  : (robots ?? (noindex ? "noindex,nofollow" : undefined));
 const organizationId = `${SITE.url}/#organization`;
 const websiteId = `${SITE.url}/#website`;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
@@ -51,6 +55,7 @@ const pageSchema = {
   description,
   url: canonical,
   mainEntityOfPage: type === "article" ? { "@id": canonical } : undefined,
+  inLanguage: "en-US",
   datePublished: article?.publishedDate.toISOString(),
   dateModified: article?.modifiedDate.toISOString(),
   image: article?.image ? [socialImage] : undefined,
@@ -120,7 +125,7 @@ const schema = {
         <meta name="google-site-verification" content={googleSiteVerification} />
       )
     }
-    {shouldNoindex && <meta name="robots" content="noindex,nofollow" />}
+    {robotsDirective && <meta name="robots" content={robotsDirective} />}
     <meta property="og:type" content={type} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
