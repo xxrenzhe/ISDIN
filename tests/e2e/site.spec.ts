@@ -128,6 +128,12 @@ test("ISDIN merchant links stay editorial before affiliate approval", async ({ p
   await expect(articleCta).toHaveAttribute("href", "https://www.isdin.com/us");
   await expect(articleCta).toHaveAttribute("data-merchant-link", "true");
   await expect(page.getByLabel("affiliate disclosure")).toHaveCount(0);
+
+  await page.goto("/brand-focus/isdin/actinica-vs-ageless/");
+
+  const productCta = page.getByRole("link", { name: "Explore Eryfotona Ageless at ISDIN" });
+  await expect(productCta).toHaveCSS("background-color", "rgb(62, 102, 98)");
+  await expect(productCta).toHaveCSS("color", "rgb(255, 255, 255)");
 });
 
 test("privacy page provides a current reader-facing notice", async ({ page }) => {

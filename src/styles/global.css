@@ -967,6 +967,17 @@ h3 {
   font-weight: 650;
 }
 
+/* Keep the shared button variants readable when an article-link rule also applies. */
+.article-body a.button--primary,
+.article-body a.button--primary:hover {
+  color: var(--white);
+}
+
+.article-body a.button--secondary,
+.article-body a.button--secondary:hover {
+  color: var(--ink);
+}
+
 .article-body blockquote {
   margin: var(--space-8) 0;
   padding: var(--space-6);
